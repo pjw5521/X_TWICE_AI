@@ -36,15 +36,15 @@ class Image_File():
         pass
     
     # image data load
-    def image_file(path):
+    def image_file(self, path, filename):
         # result 
         img_file = []
-
         file_list = os.listdir(path)
 
-        print(file_list)
-
-
+        for i in range(1, len(file_list) + 1):
+            img_file.append(Image.open(path + '/' + filename + str(i) + '.jpg'))
+        
+        return img_file
 
 # main 함수
 if __name__ == '__main__':
@@ -63,13 +63,19 @@ if __name__ == '__main__':
     path_bright = './data/bright'
     path_dark = './data/dark'
 
+    #이미지 파일 이름
+    name_train = "train"
+    name_rotate = "rotate"
+    name_mirror = "mirror"
+    name_bright = "bright"
+    name_dark = "dark"
+
     # data load 불러오기
     imag_file = Image_File()
-    imag_file.image_file(path_train)
-
-    
+    img_train = imag_file.image_file(path_train, name_train)
 
     # data transform
+    transform = transforms.Compose
 
 
 
