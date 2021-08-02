@@ -1,21 +1,22 @@
 import torch
 import torch.nn  as nn
+from torch.utils.data.dataloader import T_co
 import torchvision
 import torchvision.models as models
 import torchvision.transforms as transforms
+import torch.utils.data as data
 import cv2
 import os
 import numpy as np
 from PIL import Image
 
-
-# image similarity 
-
+# image similarity class
 class Image_Similarity():
 
     def __init__(self) -> None:
+        cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model =  models.vgg16(pretrained=True) # 사전에 훈련된 모델
-        self.New_model = nn.Sequential(*(list(self.model.children())[0:1]))
+        self.New_model = nn.Sequential(*(list(self.model.children())[0:1])).to(cuda)
 
     # model의 결과를 numpy로
     def forward(self, img):
@@ -27,14 +28,14 @@ class Image_Similarity():
         return result
     
     # compute image similarity
-    def Compute_sim(img1_vec, img2_vec):
+    def Compute_sim(self, img1_vec, img2_vec):
         return np.dot(img1_vec, img2_vec) / (np.norm(img1_vec) * np.norm(img2_vec))
 
+# Image File
 class Image_File():
 
     def __init__(self) -> None:
-        pass
-    
+        pass    
     # image data load
     def image_file(self, path, filename):
         # result 
@@ -46,14 +47,49 @@ class Image_File():
         
         return img_file
 
+    # image file path list
+    def make_file_list(self, path, filename):
+
+        train_img_list = list()
+
+        for i in range(1, 101):
+            img_path = path + '/' + filename + str(i) + '.jpg'
+            train_img_list.append(img_path)
+
+        return train_img_list
+
+    #image transform & cuda data로 바꿔주기
+    def image_transform(self, img_list):
+
+        # print(img_list) - debug
+
+        # data transform
+        transform = transforms.Compose([
+        transforms.Resize((224,224)),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+        ])
+
+        # cuda
+        cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+        result_image = []
+
+        for image in img_list:
+            # print(image)
+            img = transform(image).to(cuda)
+            result_image.append(img)
+
+        return result_image
+    
 # main 함수
 if __name__ == '__main__':
 
     # GPU 설정
-    print(torch.cuda.is_available())
+    print(torch.cuda.is_available()) # True
     print(torch.cuda.device_count()) # 2개 
 
-    cuda = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(cuda)
 
     # 이미지 파일 경로
@@ -70,12 +106,36 @@ if __name__ == '__main__':
     name_bright = "bright"
     name_dark = "dark"
 
-    # data load 불러오기
-    imag_file = Image_File()
-    img_train = imag_file.image_file(path_train, name_train)
+    # all data load 불러오기
+    image_file = Image_File()
+    img_train = image_file.image_file(path_train, name_train)
+    img_rotate = image_file.image_file(path_rotate, name_rotate)
+    img_mirror = image_file.image_file(path_mirror, name_mirror)
+    img_dark = image_file.image_file(path_dark, name_dark)
+    img_bright = image_file.image_file(path_bright, name_bright)
 
-    # data transform
-    transform = transforms.Compose
+    # transform data
+    img_trans_train = image_file.image_transform(img_train)
+    img_trans_rotate = image_file.image_transform(img_rotate)
+    img_trans_mirror = image_file.image_transform(img_mirror)
+    img_trans_dark = image_file.image_transform(img_dark)
+    img_trans_bright = image_file.image_transform(img_bright)
+
+    # debug
+    print(img_trans_train)
+    print(img_trans_rotate)
+    print(img_trans_mirror)
+    print(img_trans_dark)
+    print(img_trans_bright)
+
+    # Image Smilarity 계산
+    img_sim = Image_Similarity()
+
+    print(img_sim.forward(img_trans_train[0]))
+    
+
+   
+
 
 
 
