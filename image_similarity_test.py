@@ -8,6 +8,8 @@ import torch.utils.data as data
 import cv2
 import os
 import numpy as np
+from numpy import dot
+from numpy.linalg import norm
 from PIL import Image
 
 # image similarity class
@@ -16,20 +18,24 @@ class Image_Similarity():
     def __init__(self) -> None:
         cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model =  models.vgg16(pretrained=True) # 사전에 훈련된 모델
-        self.New_model = nn.Sequential(*(list(self.model.children())[0:1])).to(cuda)
+        self.New_model = nn.Sequential(*(list(self.model.children())[0:1]))
 
     # model의 결과를 numpy로
     def forward(self, img):
 
         result = self.New_model(img.unsqueeze(0))
         result = result.view(-1, 512 * 7 * 7).cpu()
-        result = result.detach().numpy()
+        result = result.squeeze(0).detach().numpy()
 
         return result
     
     # compute image similarity
     def Compute_sim(self, img1_vec, img2_vec):
-        return np.dot(img1_vec, img2_vec) / (np.norm(img1_vec) * np.norm(img2_vec))
+        return dot(img1_vec, img2_vec) / (norm(img1_vec) * norm(img2_vec))
+
+    
+    # result method
+    def Resutl_Top_3(self, train_f, )
 
 # Image File
 class Image_File():
@@ -77,7 +83,7 @@ class Image_File():
 
         for image in img_list:
             # print(image)
-            img = transform(image).to(cuda)
+            img = transform(image)
             result_image.append(img)
 
         return result_image
@@ -89,8 +95,8 @@ if __name__ == '__main__':
     print(torch.cuda.is_available()) # True
     print(torch.cuda.device_count()) # 2개 
 
-    cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(cuda)
+    # cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # print(cuda)
 
     # 이미지 파일 경로
     path_train = './data/train'
@@ -121,18 +127,44 @@ if __name__ == '__main__':
     img_trans_dark = image_file.image_transform(img_dark)
     img_trans_bright = image_file.image_transform(img_bright)
 
-    # debug
+    ''' debug
     print(img_trans_train)
     print(img_trans_rotate)
     print(img_trans_mirror)
     print(img_trans_dark)
     print(img_trans_bright)
-
+    '''
+    
     # Image Smilarity 계산
     img_sim = Image_Similarity()
 
-    print(img_sim.forward(img_trans_train[0]))
+    # image feature vector
+    img_result_train = []
+    img_result_rotate = []
+    img_result_mirror = []
+    img_result_dark = []
+    img_result_bright = []
     
+    print("image sim 계산")
+
+    #  image feature vector: 우선 cpu로 10개 이미지 해보기  
+    for i in range(0, 10):
+        print(str(i) + "image")
+        img_result_train.append(img_sim.forward(img_trans_train[i]))
+        img_result_rotate.append(img_sim.forward(img_trans_rotate[i]))
+        img_result_mirror.append(img_sim.forward(img_trans_mirror[i]))
+        img_result_dark.append(img_sim.forward(img_trans_dark[i]))
+        img_result_bright.append(img_sim.forward(img_trans_bright[i]))
+    
+
+    # Result method
+
+    # gitub에 올라가나용?
+
+
+
+    
+
 
    
 
