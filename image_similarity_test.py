@@ -35,7 +35,75 @@ class Image_Similarity():
 
     
     # result method
-    def Resutl_Top_3(self, train_f, )
+    def Resutl_Top_4(self, train_f,  rotate_f, mirror_f, dark_f, bright_f):
+
+        #debug 
+        print(len(train_f))
+        print(len(rotate_f))
+        print(len(mirror_f))
+        print(len(dark_f))
+        print(len(bright_f))
+
+        # 해당 이미지가 몇 개가 일치하는가?
+        Result_total = []
+
+        # similarity
+        for t_idx, train_vec in enumerate(train_f):
+
+            print("index " + str(t_idx))
+            
+            # image 하나의 결과
+            Result = []
+            
+            Result_r = []
+            Result_m = []
+            Result_d = []
+            Result_b = []
+
+            # rotate similarity
+            for rotate_vec in rotate_f: # 10개
+                Result_r.append(self.Compute_sim(train_vec, rotate_vec))
+            Result.append(Result_r)
+            
+            for mirror_vec in mirror_f:
+                Result_m.append(self.Compute_sim(train_vec, mirror_vec))
+            Result.append(Result_m) 
+            
+            for dark_vec in dark_f:
+                Result_d.append(self.Compute_sim(train_vec, dark_vec))
+            Result.append(Result_d)
+            
+            for bright_vec in bright_f:
+                Result_b.append(self.Compute_sim(train_vec, bright_vec))          
+            Result.append(Result_b)
+
+            Result = np.array(Result)
+
+            ## accuracy - debug
+            print("max")
+            print(Result)
+            #print(np.max(Result))
+            #print(np.argmax(Result)) # index가 일렬로 나오는 
+
+            count = 0
+
+            for i in range(0, 4):
+                print(np.max(Result))
+                print(np.argmax(Result))
+                index = np.argmax(Result)
+                if t_idx == int(index % 10):
+                    count += 1
+                    Result[int(index/10)][int(index % 10)] = 0
+            
+            Result_total.append(count)
+        
+        print("accuracy")    
+        print(Result_total)
+
+
+            
+
+            
 
 # Image File
 class Image_File():
@@ -150,16 +218,24 @@ if __name__ == '__main__':
     #  image feature vector: 우선 cpu로 10개 이미지 해보기  
     for i in range(0, 10):
         print(str(i) + "image")
+
         img_result_train.append(img_sim.forward(img_trans_train[i]))
         img_result_rotate.append(img_sim.forward(img_trans_rotate[i]))
         img_result_mirror.append(img_sim.forward(img_trans_mirror[i]))
         img_result_dark.append(img_sim.forward(img_trans_dark[i]))
         img_result_bright.append(img_sim.forward(img_trans_bright[i]))
     
+    ''' debug
+    print(len(img_result_train))
+    print(len(img_result_rotate))
+    print(len(img_result_mirror))
+    print(len(img_result_dark))
+    print(len(img_result_bright))
+    '''
 
     # Result method
+    img_sim.Resutl_Top_4(img_result_train, img_result_rotate, img_result_mirror, img_result_dark, img_result_bright)
 
-    # gitub에 올라가나용?
 
 
 
