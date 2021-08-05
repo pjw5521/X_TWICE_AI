@@ -11,6 +11,8 @@ import numpy as np
 from numpy import dot
 from numpy.linalg import norm
 from PIL import Image
+from matplotlib import pyplot as plt
+from mpl_toolkits import mplot3d
 
 # image similarity class
 class Image_Similarity():
@@ -44,66 +46,132 @@ class Image_Similarity():
         print(len(dark_f))
         print(len(bright_f))
 
-        # 해당 이미지가 몇 개가 일치하는가?
-        Result_total = []
+        ## Result 값 
+        Result_total = [] # 해당 이미지가 몇 개가 일치하는가?
+        Result_value = [] # 일치하는 값들의 대략적인 Similarity 값 저장
+        Result_index = [] # 일치하는 이미지의 index
+        Result_Not_index = [] # 일치하지않는 이미지는 무엇인가?
+        Result_Not_value = [] # 일치하지않는 이미지의 대략적인 Similarity 값?
 
         # similarity
         for t_idx, train_vec in enumerate(train_f):
 
-            print("index " + str(t_idx))
+            # print("index " + str(t_idx))
             
             # image 하나의 결과
-            Result = []
+            result = []
+            result_value = []
+            result_index = []
+            result_Not_index = []
+            result_Not_value = [] 
             
-            Result_r = []
-            Result_m = []
-            Result_d = []
-            Result_b = []
+            result_r = []
+            result_m = []
+            result_d = []
+            result_b = []
 
             # rotate similarity
             for rotate_vec in rotate_f: # 10개
-                Result_r.append(self.Compute_sim(train_vec, rotate_vec))
-            Result.append(Result_r)
+                result_r.append(self.Compute_sim(train_vec, rotate_vec))
+            result.append(result_r)
             
             for mirror_vec in mirror_f:
-                Result_m.append(self.Compute_sim(train_vec, mirror_vec))
-            Result.append(Result_m) 
+                result_m.append(self.Compute_sim(train_vec, mirror_vec))
+            result.append(result_m) 
             
             for dark_vec in dark_f:
-                Result_d.append(self.Compute_sim(train_vec, dark_vec))
-            Result.append(Result_d)
+                result_d.append(self.Compute_sim(train_vec, dark_vec))
+            result.append(result_d)
             
             for bright_vec in bright_f:
-                Result_b.append(self.Compute_sim(train_vec, bright_vec))          
-            Result.append(Result_b)
+                result_b.append(self.Compute_sim(train_vec, bright_vec))          
+            result.append(result_b)
 
-            Result = np.array(Result)
+            result = np.array(result)
 
             ## accuracy - debug
             print("max")
-            print(Result)
-            #print(np.max(Result))
-            #print(np.argmax(Result)) # index가 일렬로 나오는 
+            print(result)
+            #print(np.max(result))
+            #print(np.argmax(result)) # index가 일렬로 나오는 
 
             count = 0
 
             for i in range(0, 4):
-                print(np.max(Result))
-                print(np.argmax(Result))
-                index = np.argmax(Result)
-                if t_idx == int(index % 10):
+
+                # result의 max 값의 index
+                index = np.argmax(result)
+                print(np.max(result))
+                print("index " +  str(int(index/100)))
+                if t_idx == int(index % 100):
                     count += 1
-                    Result[int(index/10)][int(index % 10)] = 0
+                    # 해당 max값 & index를 저장
+                    result_value.append(np.max(result))
+                    result_index.append(int(index/100))
+                    # result_index.append(t_idx)
+                    result[int(index/100)][int(index % 100)] = 0
+                # 일치하지않을 경우
+                else:
+                    # debug
+                    print("else")
+                    print(np.max(result))
+                    print(int(index/100)) 
+
+                    result_Not_value.append(np.max(result))
+                    result_Not_index.append(int(index/100))
+                    result[int(index/100)][int(index % 100)] = 0
             
+
+            # 최종 Result에 append
             Result_total.append(count)
-        
+            Result_value.append(result_value)
+            Result_index.append(result_index)
+            Result_Not_index.append(result_Not_index)
+            Result_Not_value.append(result_Not_value)
+            
+        # debug
         print("accuracy")    
         print(Result_total)
+        print("accuracy value")
+        print(Result_value)
+        print("accuracy index")
+        print(Result_index)
+        print("Not consistent: ")
+        print("index")
+        print(Result_Not_index)
+        print("Not_value")
+        print(Result_Not_value)
 
+        # matplot show
+        fig = plt.figure(figsize=(12,5))
+        ax1 = fig.add_subplot(1, 3, 1, projection='3d')
 
-            
+        for i in range(1, len(Result_value) + 1):
+            for j in range(0, len(Result_value[i - 1])):
+                ax1.scatter(i, Result_index[i - 1][j], Result_value[i - 1][j], c = Result_value[i - 1][j], cmap = 'jet')
+        
+        ax1.set_xlabel('image')
+        ax1.set_ylabel('index')
+        ax1.set_zlabel('similarity')
+        ax1.set_title('Consistent image')
+        ax1.view_init(40, -60)
+        ax1.invert_xaxis()
 
-            
+        
+        ax2 = fig.add_subplot(1, 3, 2, projection = '3d')
+        
+        for i in range(1, len(Result_Not_value) + 1):
+            for j in range(0, len(Result_Not_value[i - 1])):
+                ax2.scatter(i, Result_Not_index[i - 1][j], Result_Not_value[i - 1][j], c = Result_Not_value[i - 1][j], cmap = 'jet')
+        
+        ax2.set_xlabel('image')
+        ax2.set_ylabel('index')
+        ax2.set_zlabel('similarity')
+        ax2.set_title('Not Consistent image')
+        ax2.view_init(40, -60)
+        ax2.invert_xaxis()
+        
+        plt.show()
 
 # Image File
 class Image_File():
@@ -216,7 +284,7 @@ if __name__ == '__main__':
     print("image sim 계산")
 
     #  image feature vector: 우선 cpu로 10개 이미지 해보기  
-    for i in range(0, 10):
+    for i in range(0, 100):
         print(str(i) + "image")
 
         img_result_train.append(img_sim.forward(img_trans_train[i]))
@@ -233,7 +301,7 @@ if __name__ == '__main__':
     print(len(img_result_bright))
     '''
 
-    # Result method
+    # result method
     img_sim.Resutl_Top_4(img_result_train, img_result_rotate, img_result_mirror, img_result_dark, img_result_bright)
 
 
