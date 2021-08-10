@@ -20,7 +20,7 @@ class Image_Similarity():
     def __init__(self) -> None:
         cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model =  models.vgg16(pretrained=True) # 사전에 훈련된 모델
-        self.New_model = nn.Sequential(*(list(self.model.children())[0:1]))
+        self.New_model = nn.Sequential(*(list(self.model.children())[0:1])).to(cuda)
 
     # model의 결과를 numpy로
     def forward(self, img):
@@ -142,6 +142,16 @@ class Image_Similarity():
         print("Not_value")
         print(Result_Not_value)
 
+        # average
+        total_first = 0
+        total_second = 0
+        total_third = 0
+        total_forth = 0
+
+        for t_value in Result_value:
+            for idx, value in t_value:
+                pass
+
         # matplot show
         fig = plt.figure(figsize=(12,5))
         ax1 = fig.add_subplot(1, 3, 1, projection='3d')
@@ -220,7 +230,7 @@ class Image_File():
         for image in img_list:
             # print(image)
             img = transform(image)
-            result_image.append(img)
+            result_image.append(img.to(cuda))
 
         return result_image
     
