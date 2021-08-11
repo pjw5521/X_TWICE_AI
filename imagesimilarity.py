@@ -26,7 +26,7 @@ cuda = torch.device('cuda')
 ## url -> image data
 
 import cv2
-from google.colab.patches import cv2_imshow
+#from google.colab.patches import cv2_imshow
 import numpy as np
 import urllib.request
 from PIL import Image
@@ -60,8 +60,6 @@ img = url_to_image(img_url)
 img = transform(img)
 img = img.cuda()
 
-img
-
 ## VGG-16 model - image 특징 정보만 가져오기
 
 import torchvision.models as models
@@ -92,7 +90,7 @@ def vgg16_array(img):
   result = result.view(-1, 512 * 7* 7)
 
   ## numpy array로 반환
-  return result.cpu().detach().numpy()
+  return result.cpu().detach().numpy().T
 
 ## Image Similarity 측정
 
