@@ -5,7 +5,7 @@ from torchvision import models
 import torchvision.transforms as transforms
 from PIL import Image
 from flask import Flask, jsonify, request
-
+import gunicorn
 
 app = Flask(__name__)
 imagenet_class_index = json.load(open('./imagenet_class_index.json'))
@@ -48,11 +48,12 @@ def predict():
 
 if __name__ == '__main__':
     # app.run()
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port = 5000)
 
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run
+# gunicorn server:app -b 0.0.0.0 --daemon
 
 #######################################################################
 # `requests <https://pypi.org/project/requests/>`_ 라이브러리를 사용하여

@@ -11,6 +11,7 @@ import cv2
 import matplotlib.pyplot as plt
 import urllib.request
 import numpy as np
+import imutils
 
 def url_to_image(url):
   resp = urllib.request.urlopen(url)
@@ -25,6 +26,11 @@ if __name__ == '__main__':
 
   img = url_to_image(img_url) # cv2 image
 
+  #img = cv2.resize(img, (224, 224))
+  # new rotate
+  rotated = imutils.rotate(img, 45)
+  cv2.imwrite('./test.jpg', rotated)
+  
   # rotation & mirror mode & bright & dark
   img_rot = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE) # 시계방향으로 90도 회전
   img_mirror = cv2.flip(img, 1)
@@ -50,13 +56,9 @@ if __name__ == '__main__':
   plt.imshow(img_bright)
 
   plt.subplot(1,5,5)
-  plt.imshow(img_dark)
+  plt.imshow(rotated)
 
   plt.show()
-
-
-
-
 
 
 
