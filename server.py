@@ -9,7 +9,10 @@ import gunicorn
 
 app = Flask(__name__)
 imagenet_class_index = json.load(open('./imagenet_class_index.json'))
+# PATH = .pt 경로
+#model = torch.load(PATH) 
 model = models.densenet121(pretrained=True)
+# PATH 수정 
 model.eval()
 
 
