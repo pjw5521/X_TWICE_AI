@@ -55,10 +55,17 @@
 - 운영체제 : Ubuntu 18.04 LTS
 - GPU : NVIDIA GTX 1080 Ti
 
-## NodeJS 설치
-1. `curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -` 으로 NodeJS 10 저장소 위치를 변경
-2. `sudo apt install nodejs` 으로 node js 설치
-3. `node -v`로 NodeJS 버전 확인하고, `npm -v`으로 NPM 버전 확인
-4. `sudo npm install -g yarn pm2`으로 전역으로 Yarn과 PM2를 설치
+## Gunicorn 실행 
+1. `pip install gunicorn`으로 gunicorn 설치
+2. `gunicorn server:app -b 0.0.0.0 --daemon --access-logfile ./gunicorn-access.log --error-logfile ./gunicorn-error.log`으로 실행. 
+    defalt port 번호는 8000으로 모든 아이피에 대해 8000 port 접속 허용. reload 시 같은 명령어 사용 가능.
+- `pkill gunicorn` : gunicorn 프로세스 종료
+- `./gunicorn-access.log`, `./gunicorn-error.log` 위치에서 access, error log 확인 가능
 
-
+## torchserve 외부 접속 허용 Port 오픈 시 
+1. TorchServe용 구성 파일인 config.properties(기본 이름)를 생성하여 원격 접속 주소 설정
+  ```
+  inference_address = Inference API 바인딩 주소. Default: http://127.0.0.1:8080
+  management_address = Management API 바인딩 주소. Default: http://127.0.0.1:8081
+  ```
+2. torchserve 실행 시 같은 디렉토리에서 실행하거나 --ts-config으로 경로 지정 
