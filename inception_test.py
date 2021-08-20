@@ -21,16 +21,19 @@ class Image_Similarity():
         cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model =  torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True) # 사전에 훈련된 모델
         self.New_model = nn.Sequential(*list(self.model.children())[0:-1]).to(cuda)
+        #self.New_model = self.model
         print(self.New_model)
 
     # model의 결과를 numpy로
     def forward(self, img):
 
-        #img = img.unsqueeze(0)
-        result = self.New_model(img)
-        print(result.size())
-        result = result.view(-1, 512 * 7 * 7).cpu()
-        result = result.squeeze(0).detach().numpy()
+        with torch.no_grad():
+            img = img.unsqueeze(0)
+            print(img.size())
+            result = self.New_model(img)
+            print(result.size())
+            result = result.view(-1, 512 * 7 * 7).cpu()
+            result = result.squeeze(0).detach().numpy()
 
         return result
     
@@ -220,10 +223,10 @@ class Image_File():
 
         # data transform
         transform = transforms.Compose([
-        transforms.Resize((299, 299)),
-        #transforms.CenterCrop(299),
+        transforms.Resize(299),
+        transforms.CenterCrop(299),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
 
         # cuda

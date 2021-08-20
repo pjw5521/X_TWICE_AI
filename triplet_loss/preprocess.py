@@ -2,4 +2,6 @@
 
 class PreProcessing:
 
+    image_train = np.array([])
+
     
