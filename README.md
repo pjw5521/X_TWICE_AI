@@ -61,30 +61,4 @@
 3. `node -v`로 NodeJS 버전 확인하고, `npm -v`으로 NPM 버전 확인
 4. `sudo npm install -g yarn pm2`으로 전역으로 Yarn과 PM2를 설치
 
-<br>
-<hr>
-<br>
 
-# X_TWICE_프로젝트명 DB(Database)
-
-## DB 환경
-- DBMS : mysql 5.7 
-
-## DB 파라미터 설정
-- character_set_client : utf8mb4
-- character_set_connection : utf8mb4
-- character_set_database : utf8mb4
-- character_set_filesystem : utf8mb4
-- character_set_results : utf8mb4
-- character_set_server : utf8mb4
-- collation_connection : utf8mb4_unicode_ci
-- collation_server : utf8mb4_unicode_ci
-- time_zone : Asia/Seoul
-
-## 포트 프로세스 충돌 시
-- ``sudo kill -9 `sudo lsof -t -i:포트번호`` : 포토번호와 관련된 모든 프로세스를 종료
-
-## DB별 계정 권한
-- test : 개발용 DB
-    - devadmin : CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT
-    - devtest : INSERT, UPDATE, DELETE, SELECT
