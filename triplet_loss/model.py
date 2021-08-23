@@ -13,7 +13,7 @@ class Image_Similarity():
     def forward(self, x):
         return self.model(x)
 
-    
+    # custom loss
     def triplet_loss(self, anchor_img, pos_img, neg_img):
         distance1 = torch.sqrt(torch.sum(torch.pow((anchor_img - pos_img), 2))).to(self.cuda)
         distance2 = torch.sqrt(torch.sum(torch.pow((anchor_img - neg_img), 2))).to(self.cuda)
