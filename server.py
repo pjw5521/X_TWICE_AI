@@ -1,6 +1,5 @@
 import io
 import json
-#
 from torchvision import models
 import torchvision.transforms as transforms
 from PIL import Image
@@ -51,7 +50,7 @@ def predict():
 
 if __name__ == '__main__':
     # app.run()
-    app.run(host='0.0.0.0', port = 5000)
+    app.run(host='0.0.0.0')
 
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
