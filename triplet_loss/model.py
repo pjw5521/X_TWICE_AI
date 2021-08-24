@@ -11,14 +11,14 @@ class Image_Similarity():
         self.model = nn.Sequential(*(list(self.old_model.children())[0:1])).to(self.cuda)
     
     def forward(self, x):
-        return self.model(x)
+        return self.model(x.unsqueeze(0))
 
     # custom loss
-    def triplet_loss(self, anchor_img, pos_img, neg_img):
+    def triplet_loss(self, anchor_img, pos_img, neg_img, margin):
         distance1 = torch.sqrt(torch.sum(torch.pow((anchor_img - pos_img), 2))).to(self.cuda)
         distance2 = torch.sqrt(torch.sum(torch.pow((anchor_img - neg_img), 2))).to(self.cuda)
 
-        return torch.max(distance1 - distance2, 0)
+        return torch.max(distance1 - distance2 + margin, 0)
 
 
 

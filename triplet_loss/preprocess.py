@@ -20,18 +20,19 @@ class PreProcessing:
     def __init__(self, data_src, ratio):
         self.cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.data_scr = data_src
+        print("image data load 중~")
         self.images_train, self.images_test, self.labels_train, self.labels_test = self.preprocessing(ratio) 
         self.unique_train_label = np.unique(self.labels_train)
         self.map_train_label_indices = {label: np.flatnonzero(self.labels_train == label) for label in 
                                         self.unique_train_label  }
 
         # debug
-        print(len(self.images_train))
-        print(len(self.images_test))
-        print(len(self.labels_train))
-        print(len(self.labels_test))
-        print(self.unique_train_label)
-        print(self.map_train_label_indices)
+        print('self.images_train : ', len(self.images_train))
+        print('self.images_test : ', len(self.images_test))
+        print('self.labels_train : ', len(self.labels_train))
+        print('self.labels_test : ', len(self.labels_test))
+        print('self.unique_train_label : ', self.unique_train_label)
+        print('self.map_train_label_indices : ', self.map_train_label_indices)
 
     # normalize
     def Normalize(self, x):
@@ -96,11 +97,11 @@ class PreProcessing:
                 print('image data load에 실패. :', dir)
                 print('Exception Message: ', e)
         
-        # debug
+        ''' debug
         print(images[0])
         print(len(labels))
         
-        ''', pos_images, neg_images
+        , pos_images, neg_images
         for i in range(1, 100 + 1):
             print(labels.count(i))
         '''
@@ -119,15 +120,13 @@ class PreProcessing:
 
         # image data shuffled
         shuffle_indices = np.random.permutation(np.arange(len(labels)))
-        images_shuffle = np.array([])
-        labels_shuffle = np.array([])
+        images_shuffle = []
+        labels_shuffle = []
 
         for index in shuffle_indices:
             print(index)   
-            images_shuffle = np.append(images_shuffle, images_pre[index])
-            labels_shuffle = np.append(labels_shuffle, labels[index])
-            #images_shuffle.append(images_pre[index])
-            #labels_shuffle.append(labels[index])
+            images_shuffle.append(images_pre[index])
+            labels_shuffle.append(labels[index])
         
         # 전체 data에 ratio 나누기
         data_size = len(images_shuffle)
@@ -145,8 +144,8 @@ class PreProcessing:
         # index 중 random하게 2개 choice
         label_p, label_n = np.random.choice(self.unique_train_label, 2, replace=False)
         # debug 
-        print('label_p :', label_p)
-        print('label_n :', label_n)
+        # print('label_p :', label_p)
+        # print('label_n :', label_n)
 
         a, p =  np.random.choice(self.map_train_label_indices[label_p], 2, replace=False)
         n = np.random.choice(self.map_train_label_indices[label_n])
@@ -156,28 +155,31 @@ class PreProcessing:
     # batch size만큼 get triplet images, 보통 batch size 32 64 16 128
     def get_triplets_batch(self, batch_size):
         
-        anchor_index, pos_index, neg_index = [], [] ,[]
+        anchor_images, pos_images, neg_images = [], [] ,[]
 
         for _ in range(batch_size):
             a, p, n = self.get_triplets()
-            anchor_index.append(a)
-            pos_index.append(p)
-            neg_index.append(n)
+            anchor_images.append(self.images_train[a])
+            pos_images.append(self.images_train[p])
+            neg_images.append(self.images_train[n])
 
-        print(self.images_train.shape)
-        print('anchor_index : ', anchor_index)
-        print('pos_index : ', pos_index)
-        print('neg_index : ', neg_index)
+        # print(self.images_train.shape)
+        print('anchor_index : ', len(anchor_images))
+        print('pos_index : ', len(pos_images))
+        print('neg_index : ', len(neg_images))
         
-        return self.images_train[anchor_index,:], self.images_train[pos_index,:], self.images_train[neg_index,:]
+        return anchor_images, pos_images, neg_images
 
+
+'''
 # proprocess.py file debugging 용 main function
 if __name__ == '__main__':
 
     dataset =  PreProcessing('../data/', 0.9)
     anchor_images, pos_images, neg_images = dataset.get_triplets_batch(16)
     print('anchor_images :' , anchor_images)
-    
+
+'''    
 
 
 
