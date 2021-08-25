@@ -158,7 +158,7 @@ class PreProcessing:
         anchor_images, pos_images, neg_images = [], [] ,[]
 
         for _ in range(batch_size):
-            a, p, n = self.get_triplets()
+            a, p, n = self.get_triplets() # 각 image의 index값을
             anchor_images.append(self.images_train[a])
             pos_images.append(self.images_train[p])
             neg_images.append(self.images_train[n])
@@ -170,6 +170,17 @@ class PreProcessing:
         
         return anchor_images, pos_images, neg_images
 
+    def val_get_triplets_batch(self, batch_size):
+
+        anchor_images, pos_images, neg_images = [], [], []
+
+        for _ in range(batch_size):
+            a, p, n = self.get_triplets
+            anchor_images.append(self.images_test[a])
+            pos_images.append(self.images_test[p])
+            neg_images.append(self.images_test[n])
+        
+        return anchor_images, pos_images, neg_images
 
 '''
 # proprocess.py file debugging 용 main function

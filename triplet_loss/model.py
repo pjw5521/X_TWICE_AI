@@ -17,8 +17,8 @@ class Image_Similarity():
     def triplet_loss(self, anchor_img, pos_img, neg_img, margin):
         distance1 = torch.sqrt(torch.sum(torch.pow((anchor_img - pos_img), 2))).to(self.cuda)
         distance2 = torch.sqrt(torch.sum(torch.pow((anchor_img - neg_img), 2))).to(self.cuda)
-
-        return torch.max(distance1 - distance2 + margin, 0)
+        result_max, index = torch.max(distance1 - distance2 + margin, 0) # torch.max는 return tuple로 두개 
+        return result_max
 
 
 

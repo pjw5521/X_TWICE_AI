@@ -30,7 +30,7 @@ img = url_to_image(img_url)
 img = transform(img) # example input
 
 # model save
-torch.save(New_model, './New_Vgg_16.pt',  _use_new_zipfile_serialization=False )
+torch.save(New_model, './My_model/New_Vgg_16.pt',  _use_new_zipfile_serialization=False )
 # traced_model = torch.jit.trace(New_model, img.unsqueeze(0))
 # traced_model.save("./New_Vgg_16.pt")
 

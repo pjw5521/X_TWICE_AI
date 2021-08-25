@@ -20,7 +20,7 @@ class Consine_Similarity():
             
             if var_sim > self.threshold:
                 check = True
-        
+                                                                            
         # check 
         if check == True:
             return 'Y' 

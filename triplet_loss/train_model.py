@@ -16,6 +16,8 @@ if __name__ == "__main__":
     step = 50 # batch size당 몇번 학습
     lr = 0.01
     margin = 0.5
+    train_loss_list = []
+    val_loss_list = []
 
     # data setUp & model Setup
     Dataset = PreProcessing(data_scr, ratio)
@@ -29,24 +31,31 @@ if __name__ == "__main__":
     # model train
     for epoch in range(train_iter):
         
+        # model train mode
         image_sim.model.train()
 
         anchor_images, pos_images, neg_images = next_batch(batch_size)
+        val_anchor_images, val_pos_images, val_neg_images = next_batch(batch_size)
 
         for anchor_img, pos_img, neg_img in zip(anchor_images, pos_images, neg_images):
+            
             # debug
-            print('anchor len : ', len(anchor_img))
+            print('anchor len : ', len(anchor_img)) # 3차원 Tensor
 
             optimizer.zero_grad() # gradient to zero
 
             anchor_output = image_sim.forward(anchor_img)
             pos_output = image_sim.forward(pos_img)
             neg_output = image_sim.forward(neg_img)
-
             loss = image_sim.triplet_loss(anchor_output, pos_output, neg_output, margin)
             loss.backward() # backpropagation
+            optimizer.step() # update gradient
+        
+        # validation
+        if epoch % 20 == 0:
+            with torch.no_grad():
 
-            optimizer.step()
+             
 
         
 

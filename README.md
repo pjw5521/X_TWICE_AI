@@ -25,9 +25,18 @@
     - 딥 러닝 서버를 위해 
 
 ## 디렉터리 및 파일
-- `crwaling.py` : 이미지 웹크로링을 위한 파일
-- `image_noise_test.py` : 이미지에 noise를 주기 위한 코드 파일
-- `image_noise.py` : 이미지 noise test 코드 파일
+- image_create 폴더
+    - `crwaling.py` : 이미지 웹크로링을 위한 파일
+    - `image_noise_test.py` : 이미지에 noise를 주기 위한 코드 파일
+    - `image_noise.py` : 이미지 noise test 코드 파일
+- My_model 폴더 : 딥 러닝 pt 파일 저장 폴더
+    - `New_Vgg_16.pt` : VGG-16 변형한 딥 모델
+- triplet_loss 폴더
+    - `train_model.py` : 모델 학습 파일
+    - `preprocess.py` : 데이터 전처리 파일
+    - `model.py` : 딥러닝 모델 파일
+- `image_prediction.py` : BackEnd와 연동하는 python 파일
+- `server.py` : Flask를 사용한 AI server 
 - `.gitignore` : Git에 올릴 시 무시할 파일 및 파일의 이름이나 경로, 적용 시 `git rm -r --cached .` 명령어 입력
 - `data` : 이미지 데이터 파일, gitignore 됨
 - `image_similarity_test` : VGG-16 모델을 사용한 결과를 확인

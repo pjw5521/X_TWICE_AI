@@ -7,11 +7,17 @@ mydb = mysql.connector.connect(
   database = "test"
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(prepared=True)
 
-def select_vector():
+def select_vector(vector_norm):
 
-  mycursor.execute("SELECT picture_vector FROM Pictures")
+  first = vector_norm - 20
+  last = vector_norm + 20 
+  adr =  ( first, last )
+
+  sql = "SELECT picture_vector FROM Pictures WHERE picture_norm BETWEEN %s AND %s"
+  
+  mycursor.execute(sql, adr)
 
   myresult = mycursor.fetchall()
 
@@ -19,6 +25,7 @@ def select_vector():
     print(x)
 
   return myresult
+  
   
 
 def insert_vector(vector):
