@@ -5,6 +5,7 @@ import torch
 import torchvision.transforms as transforms
 from PIL import Image
 import db_connection
+from scipy.sparse import csr_matrix 
 
 class Image_Prediction():
 
@@ -35,29 +36,32 @@ class Image_Prediction():
 
         check = False
         vector_list = db_connection.select_vector(self.current_norm)
-        
-        print(vector_list)
-        
+          
         # string list to float list
         vector_list= np.array(vector_list,dtype=float) 
-        print(vector_list)
+        #print(vector_list)
 
-        print(self.current_vector)
+        dense_vector = csr_matrix(self.current_vector)
+        #densevector = densevector.toarray() 
+
+        with np.printoptions(threshold=np.inf):
+            print(dense_vector.data)
+
+        print("densevector.data.shape : ", dense_vector.data.shape)
+        
         for vector in vector_list:
             var_sim = dot(self.current_vector, vector) / (norm(self.current_vector) * norm(vector))
-            # debugging
-            print(var_sim)
 
             # 유사한 경우 
             if var_sim.any() > self.threshold:
                 check = True
 
         if check == True:
-            print("yes")
+            print("check : yes")
             return 'Y'
         else :
-            print('No')
-            return self.current_vector, self.current_norm
+            print('check : No')
+            return dense_vector, self.current_norm
 
 '''
 if __name__ == '__main__':
