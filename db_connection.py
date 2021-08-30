@@ -11,20 +11,27 @@ mycursor = mydb.cursor(prepared=True)
 
 def select_vector(vector_norm):
 
-  first = vector_norm - 20
-  last = vector_norm + 20 
-  adr =  ( first, last )
-
-  sql = "SELECT picture_vector FROM Pictures WHERE picture_norm BETWEEN %s AND %s"
+  # 나중에 주석 코드로 변경 
+  #first = vector_norm - 100
+  #last = vector_norm + 100 
   
-  mycursor.execute(sql, adr)
+  #adr =  ( first, last )
+
+  sql = "SELECT picture_vector FROM Pictures"
+  #sql = "SELECT picture_vector FROM Pictures WHERE picture_norm BETWEEN %s AND %s"
+  
+  mycursor.execute(sql)
+  #mycursor.execute(sql, adr)
 
   myresult = mycursor.fetchall()
+  final = []
 
   for x in myresult:
-    print(x)
-
-  return myresult
+    print(x[0])
+    final.append(x[0])
+    
+  print(final)
+  return final
   
   
 

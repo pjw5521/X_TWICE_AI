@@ -68,15 +68,18 @@ def predict():
 if __name__ == '__main__':
     # app.run()
     app.run(host='0.0.0.0')
-    '''
+''' 
     image  = Image.open('./image.png')
     predict = Image_Prediction('./My_model/New_Vgg_16.pt', image)
-    with numpy.printoptions(threshold=numpy.inf):
-        print('predict current_vector :', predict.current_vector)
+    #with numpy.printoptions(threshold=numpy.inf):
+    #    print('predict current_vector :', predict.current_vector)
+    print(type(predict.current_vector))
     print('norm', predict.current_norm )
     result = predict.Check_Similarity()
     print(result[0])
-    '''
+ '''
+   
+
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run

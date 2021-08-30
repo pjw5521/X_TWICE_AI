@@ -35,13 +35,21 @@ class Image_Prediction():
 
         check = False
         vector_list = db_connection.select_vector(self.current_norm)
+        
+        print(vector_list)
+        
+        # string list to float list
+        vector_list= np.array(vector_list,dtype=float) 
         print(vector_list)
 
+        print(self.current_vector)
         for vector in vector_list:
             var_sim = dot(self.current_vector, vector) / (norm(self.current_vector) * norm(vector))
+            # debugging
+            print(var_sim)
 
-            # 유사한 경우
-            if var_sim > self.threshold:
+            # 유사한 경우 
+            if var_sim.any() > self.threshold:
                 check = True
 
         if check == True:
