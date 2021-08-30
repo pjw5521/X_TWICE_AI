@@ -164,9 +164,9 @@ class PreProcessing:
             neg_images.append(self.images_train[n])
 
         # print(self.images_train.shape)
-        print('anchor_index : ', len(anchor_images))
-        print('pos_index : ', len(pos_images))
-        print('neg_index : ', len(neg_images))
+        # print('anchor_index : ', len(anchor_images))
+        # print('pos_index : ', len(pos_images))
+        # print('neg_index : ', len(neg_images))
         
         return anchor_images, pos_images, neg_images
 

@@ -8,7 +8,6 @@ from flask import Flask, jsonify, request
 import gunicorn
 from image_prediction import Image_Prediction
 from PIL import Image
-import numpy 
 
 app = Flask(__name__)
 imagenet_class_index = json.load(open('./imagenet_class_index.json'))
@@ -60,8 +59,6 @@ def predict():
         if result == 'Y': 
             return jsonify({ 'result' : 'fail' })
         else :
-            with numpy.printoptions(threshold=numpy.inf):
-                vertorlist = str(result[0])
             return jsonify({ 'picture_vector': str(result[0]), 'picture_norm' : str(result[1]) })
         
 
@@ -79,7 +76,6 @@ if __name__ == '__main__':
     print(result[0])
  '''
    
-
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run
