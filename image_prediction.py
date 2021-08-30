@@ -36,20 +36,19 @@ class Image_Prediction():
 
         check = False
         vector_list = db_connection.select_vector(self.current_norm)
-          
-        # string list to float list
-        vector_list= np.array(vector_list,dtype=float) 
-        #print(vector_list)
-
-        dense_vector = csr_matrix(self.current_vector)
-        #densevector = densevector.toarray() 
-
-        with np.printoptions(threshold=np.inf):
-            print(dense_vector.data)
-
-        print("densevector.data.shape : ", dense_vector.data.shape)
         
-        for vector in vector_list:
+        # string to array 
+        convert_vector_list = []
+        for i in range(len(vector_list)):
+            convert_vector_list.append(vector_list[i].split(', '))
+       
+        # string array to float array 
+        convert_vector_list= np.array(convert_vector_list,dtype=float).reshape(-1)
+
+        # vector 압축
+        dense_vector = csr_matrix(self.current_vector).reshape(1,-1)
+        
+        for vector in convert_vector_list:
             var_sim = dot(self.current_vector, vector) / (norm(self.current_vector) * norm(vector))
 
             # 유사한 경우 

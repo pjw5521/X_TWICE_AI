@@ -27,10 +27,8 @@ def select_vector(vector_norm):
   final = []
 
   for x in myresult:
-    print(x[0])
     final.append(x[0])
-    
-  print(final)
+
   return final
   
   
