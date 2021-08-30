@@ -6,7 +6,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 import db_connection
 from scipy.sparse import csr_matrix 
-
+import sys
 class Image_Prediction():
 
     def __init__(self, model_path, image):
@@ -58,9 +58,10 @@ class Image_Prediction():
         if check == True:
             print("check : yes")
             return 'Y'
+
         else :
             print('check : No')
-            return dense_vector, self.current_norm
+            return dense_vector.data, self.current_norm
 
 '''
 if __name__ == '__main__':

@@ -75,7 +75,8 @@ if __name__ == '__main__':
     #    print('predict current_vector :', predict.current_vector)
     print('vertor_norm : ', predict.current_norm )
     result = predict.Check_Similarity()
-    print("result : ", result[0])
+    with numpy.printoptions(threshold=numpy.inf):
+        print("result : ", result[0])
 
    
 ######################################################################
