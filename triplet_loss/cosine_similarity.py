@@ -14,20 +14,25 @@ class Consine_Similarity():
     # 이때 들어오는 vector 값을 numpy array값으로 했다고 가정 
     def forward(self, vector1, vector2_list):
 
-        check = False
-
+        max_sim = []
+        max_label = []
+        
         # similarity 계산     
-        for vector2 in vector2_list:
+        for idx, vector2 in enumerate(vector2_list):
+
             var_sim = dot(vector1, vector2 ) / (norm(vector1) * norm(vector2))
+
+            if len(max_sim) < 4:
+                max_sim.append(var_sim)
+                max_label.append(idx)
+            else:
+                for i in range(4):
+                    if var_sim > max_sim[i]:
+                        max_sim[i] = var_sim
+                        max_label[i] = idx
+
+        return max_sim, max_label
             
-            if var_sim > self.threshold:
-                check = True
-                                                                            
-        # check 
-        if check == True:
-            return 'Y' 
-        else :
-            return 'N'
 
     def return_vector(self, img_list):
         
@@ -35,9 +40,8 @@ class Consine_Similarity():
         
         for img in img_list:
             result = self.model.forward(img)
-            print('result: ', result)
-            print('result shape: ', result.shape)
-            result = result.veiw
+            result = result.view(-1, 512).cpu()
+            result = result.squeeze(0).detach().numpy()
             vector_list.append(result)
         
         return vector_list

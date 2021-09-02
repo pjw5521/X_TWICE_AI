@@ -30,8 +30,15 @@ if __name__ == '__main__':
     cosine_sim = Consine_Similarity(model_path_1)
 
     train_vector = cosine_sim.return_vector(images_train)
-    print(train_vector)
+    noise_vector = cosine_sim.return_vector(images_noise)
+    print(len(train_vector))
+    print('noise_vector: ', len(noise_vector))
 
+    ## circulate cosine_sim
+
+    image1_sim, image1_label = cosine_sim.forward(train_vector[0], noise_vector)
+    print('image1_sim: ', image1_sim)
+    print('image1_label: ',image1_label)
 
 
 
