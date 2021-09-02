@@ -1772,3 +1772,1242 @@ TypeError: Object of type 'ndarray' is not JSON serializable
 [2021-08-25 16:46:41 +0900] [22385] [INFO] Listening at: http://0.0.0.0:8000 (22385)
 [2021-08-25 16:46:41 +0900] [22385] [INFO] Using worker: sync
 [2021-08-25 16:46:41 +0900] [22388] [INFO] Booting worker with pid: 22388
+[2021-08-26 16:48:19,770] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 37, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 20, in select_vector
+    mycursor.execute(sql, adr)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-08-26 16:49:44,602] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 37, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 20, in select_vector
+    mycursor.execute(sql, adr)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-08-26 16:50:56 +0900] [22388] [INFO] Worker exiting (pid: 22388)
+[2021-08-26 16:50:56 +0900] [22385] [INFO] Handling signal: term
+[2021-08-26 16:50:57 +0900] [22385] [INFO] Shutting down: Master
+[2021-08-26 16:51:01 +0900] [10881] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 16:51:01 +0900] [10881] [INFO] Listening at: http://0.0.0.0:8000 (10881)
+[2021-08-26 16:51:01 +0900] [10881] [INFO] Using worker: sync
+[2021-08-26 16:51:01 +0900] [10884] [INFO] Booting worker with pid: 10884
+[2021-08-26 17:24:33 +0900] [10881] [INFO] Handling signal: hup
+[2021-08-26 17:24:33 +0900] [10881] [INFO] Hang up: Master
+[2021-08-26 17:24:33 +0900] [10881] [INFO] Handling signal: term
+[2021-08-26 17:24:33 +0900] [14770] [INFO] Booting worker with pid: 14770
+[2021-08-26 17:24:34 +0900] [14770] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 239, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on '172.16.163.153:3306' (111)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 9, in <module>
+    from image_prediction import Image_Prediction
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 7, in <module>
+    import db_connection
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 7, in <module>
+    database = "test"
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/abstracts.py", line 1009, in connect
+    self._open_connection()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 242, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on '172.16.163.153:3306' (111)
+[2021-08-26 17:24:34 +0900] [14770] [INFO] Worker exiting (pid: 14770)
+[2021-08-26 17:45:28 +0900] [4326] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 17:45:28 +0900] [4326] [INFO] Listening at: http://0.0.0.0:8000 (4326)
+[2021-08-26 17:45:28 +0900] [4326] [INFO] Using worker: sync
+[2021-08-26 17:45:28 +0900] [4329] [INFO] Booting worker with pid: 4329
+[2021-08-26 18:06:03 +0900] [4329] [INFO] Worker exiting (pid: 4329)
+[2021-08-26 18:06:03 +0900] [4326] [INFO] Handling signal: term
+[2021-08-26 18:06:03 +0900] [4326] [INFO] Shutting down: Master
+[2021-08-26 18:06:08 +0900] [5855] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:06:08 +0900] [5855] [INFO] Listening at: http://0.0.0.0:8000 (5855)
+[2021-08-26 18:06:08 +0900] [5855] [INFO] Using worker: sync
+[2021-08-26 18:06:08 +0900] [5858] [INFO] Booting worker with pid: 5858
+[2021-08-26 18:06:14,730] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 62, in predict
+    return jsonify({ 'picture_vector': str(result[0]), 'picture_norm' : str(result[1].__dict__) })
+AttributeError: 'numpy.float32' object has no attribute '__dict__'
+[2021-08-26 18:06:23,503] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 62, in predict
+    return jsonify({ 'picture_vector': str(result[0]), 'picture_norm' : str(result[1]) })
+AttributeError: 'numpy.float32' object has no attribute '__dict__'
+[2021-08-26 18:06:27 +0900] [5925] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:06:27 +0900] [5925] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:06:27 +0900] [5925] [ERROR] Retrying in 1 second.
+[2021-08-26 18:06:28 +0900] [5925] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:06:28 +0900] [5925] [ERROR] Retrying in 1 second.
+[2021-08-26 18:06:29 +0900] [5925] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:06:29 +0900] [5925] [ERROR] Retrying in 1 second.
+[2021-08-26 18:06:30,539] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 62, in predict
+    return jsonify({ 'picture_vector': str(result[0]), 'picture_norm' : str(result[1]) })
+AttributeError: 'numpy.float32' object has no attribute '__dict__'
+[2021-08-26 18:06:30 +0900] [5925] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:06:30 +0900] [5925] [ERROR] Retrying in 1 second.
+[2021-08-26 18:06:31 +0900] [5925] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:06:31 +0900] [5925] [ERROR] Retrying in 1 second.
+[2021-08-26 18:06:32 +0900] [5925] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-08-26 18:06:35 +0900] [5858] [INFO] Worker exiting (pid: 5858)
+[2021-08-26 18:06:35 +0900] [5855] [INFO] Handling signal: term
+[2021-08-26 18:06:35 +0900] [5855] [INFO] Shutting down: Master
+[2021-08-26 18:06:36 +0900] [5945] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:06:36 +0900] [5945] [INFO] Listening at: http://0.0.0.0:8000 (5945)
+[2021-08-26 18:06:36 +0900] [5945] [INFO] Using worker: sync
+[2021-08-26 18:06:36 +0900] [5948] [INFO] Booting worker with pid: 5948
+[2021-08-26 18:14:37 +0900] [5945] [INFO] Handling signal: term
+[2021-08-26 18:14:37 +0900] [5948] [INFO] Worker exiting (pid: 5948)
+[2021-08-26 18:14:37 +0900] [5945] [INFO] Shutting down: Master
+[2021-08-26 18:14:38 +0900] [6181] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:14:38 +0900] [6181] [INFO] Listening at: http://0.0.0.0:8000 (6181)
+[2021-08-26 18:14:38 +0900] [6181] [INFO] Using worker: sync
+[2021-08-26 18:14:38 +0900] [6184] [INFO] Booting worker with pid: 6184
+[2021-08-26 18:14:38 +0900] [6184] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 63
+    return jsonify({ 'picture_vector': str(result[0]), 'picture_norm' : with numpy.printoptions(threshold=numpy.inf): str(result[1]) })
+                                                                           ^
+SyntaxError: invalid syntax
+[2021-08-26 18:14:38 +0900] [6184] [INFO] Worker exiting (pid: 6184)
+[2021-08-26 18:14:38 +0900] [6181] [INFO] Shutting down: Master
+[2021-08-26 18:14:38 +0900] [6181] [INFO] Reason: Worker failed to boot.
+[2021-08-26 18:14:53 +0900] [6188] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:14:53 +0900] [6188] [INFO] Listening at: http://0.0.0.0:8000 (6188)
+[2021-08-26 18:14:53 +0900] [6188] [INFO] Using worker: sync
+[2021-08-26 18:14:53 +0900] [6191] [INFO] Booting worker with pid: 6191
+[2021-08-26 18:14:53 +0900] [6191] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 63
+    return jsonify({ 'picture_vector': str(result[0]), 'picture_norm' : with numpy.printoptions(threshold=numpy.inf): str(result[1]) })
+                                                                           ^
+SyntaxError: invalid syntax
+[2021-08-26 18:14:53 +0900] [6191] [INFO] Worker exiting (pid: 6191)
+[2021-08-26 18:14:53 +0900] [6188] [INFO] Shutting down: Master
+[2021-08-26 18:14:53 +0900] [6188] [INFO] Reason: Worker failed to boot.
+[2021-08-26 18:16:01 +0900] [6274] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:16:01 +0900] [6274] [INFO] Listening at: http://0.0.0.0:8000 (6274)
+[2021-08-26 18:16:01 +0900] [6274] [INFO] Using worker: sync
+[2021-08-26 18:16:01 +0900] [6277] [INFO] Booting worker with pid: 6277
+[2021-08-26 18:16:01 +0900] [6277] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 61
+    if result == 'Y':
+     ^
+IndentationError: expected an indented block
+[2021-08-26 18:16:01 +0900] [6277] [INFO] Worker exiting (pid: 6277)
+[2021-08-26 18:16:01 +0900] [6274] [INFO] Shutting down: Master
+[2021-08-26 18:16:01 +0900] [6274] [INFO] Reason: Worker failed to boot.
+[2021-08-26 18:16:34 +0900] [6315] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:16:34 +0900] [6315] [INFO] Listening at: http://0.0.0.0:8000 (6315)
+[2021-08-26 18:16:34 +0900] [6315] [INFO] Using worker: sync
+[2021-08-26 18:16:34 +0900] [6318] [INFO] Booting worker with pid: 6318
+[2021-08-26 18:16:34 +0900] [6318] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 61
+    if result == 'Y':
+     ^
+IndentationError: expected an indented block
+[2021-08-26 18:16:34 +0900] [6318] [INFO] Worker exiting (pid: 6318)
+[2021-08-26 18:16:34 +0900] [6315] [INFO] Shutting down: Master
+[2021-08-26 18:16:34 +0900] [6315] [INFO] Reason: Worker failed to boot.
+[2021-08-26 18:18:52 +0900] [6839] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:18:52 +0900] [6839] [INFO] Listening at: http://0.0.0.0:8000 (6839)
+[2021-08-26 18:18:52 +0900] [6839] [INFO] Using worker: sync
+[2021-08-26 18:18:52 +0900] [6842] [INFO] Booting worker with pid: 6842
+[2021-08-26 18:18:52 +0900] [6842] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 61
+    if result == 'Y':
+     ^
+IndentationError: expected an indented block
+[2021-08-26 18:18:52 +0900] [6842] [INFO] Worker exiting (pid: 6842)
+[2021-08-26 18:18:52 +0900] [6839] [INFO] Shutting down: Master
+[2021-08-26 18:18:52 +0900] [6839] [INFO] Reason: Worker failed to boot.
+[2021-08-26 18:19:20 +0900] [6980] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:19:20 +0900] [6980] [INFO] Listening at: http://0.0.0.0:8000 (6980)
+[2021-08-26 18:19:20 +0900] [6980] [INFO] Using worker: sync
+[2021-08-26 18:19:20 +0900] [6983] [INFO] Booting worker with pid: 6983
+[2021-08-26 18:19:25,759] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 21, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 27, in GetFeatureVector
+    result = self.model(trans_image.unsqueeze(0))
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/pooling.py", line 164, in forward
+    self.return_indices)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/_jit_internal.py", line 365, in fn
+    return if_false(*args, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/functional.py", line 659, in _max_pool2d
+    return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 3.94 GiB total capacity; 82.08 MiB already allocated; 36.94 MiB free; 90.00 MiB reserved in total by PyTorch)
+[2021-08-26 18:19:37 +0900] [6983] [INFO] Worker exiting (pid: 6983)
+[2021-08-26 18:19:37 +0900] [6980] [INFO] Handling signal: term
+[2021-08-26 18:19:37 +0900] [6980] [INFO] Shutting down: Master
+[2021-08-26 18:19:38 +0900] [7080] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:19:38 +0900] [7080] [INFO] Listening at: http://0.0.0.0:8000 (7080)
+[2021-08-26 18:19:38 +0900] [7080] [INFO] Using worker: sync
+[2021-08-26 18:19:38 +0900] [7083] [INFO] Booting worker with pid: 7083
+[2021-08-26 18:19:43,051] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 21, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 27, in GetFeatureVector
+    result = self.model(trans_image.unsqueeze(0))
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/conv.py", line 399, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/conv.py", line 396, in _conv_forward
+    self.padding, self.dilation, self.groups)
+RuntimeError: cuDNN error: CUDNN_STATUS_NOT_INITIALIZED
+[2021-08-26 18:19:52 +0900] [7083] [INFO] Worker exiting (pid: 7083)
+[2021-08-26 18:19:52 +0900] [7080] [INFO] Handling signal: term
+[2021-08-26 18:19:52 +0900] [7080] [INFO] Shutting down: Master
+[2021-08-26 18:19:53 +0900] [7219] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:19:53 +0900] [7219] [INFO] Listening at: http://0.0.0.0:8000 (7219)
+[2021-08-26 18:19:53 +0900] [7219] [INFO] Using worker: sync
+[2021-08-26 18:19:53 +0900] [7222] [INFO] Booting worker with pid: 7222
+[2021-08-26 18:19:57,773] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 21, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 27, in GetFeatureVector
+    result = self.model(trans_image.unsqueeze(0))
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/conv.py", line 399, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/conv.py", line 396, in _conv_forward
+    self.padding, self.dilation, self.groups)
+RuntimeError: cuDNN error: CUDNN_STATUS_NOT_INITIALIZED
+[2021-08-26 18:20:08 +0900] [7222] [INFO] Worker exiting (pid: 7222)
+[2021-08-26 18:20:08 +0900] [7219] [INFO] Handling signal: term
+[2021-08-26 18:20:08 +0900] [7219] [INFO] Shutting down: Master
+[2021-08-26 18:20:09 +0900] [7329] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:20:09 +0900] [7329] [INFO] Listening at: http://0.0.0.0:8000 (7329)
+[2021-08-26 18:20:09 +0900] [7329] [INFO] Using worker: sync
+[2021-08-26 18:20:09 +0900] [7332] [INFO] Booting worker with pid: 7332
+[2021-08-26 18:37:55 +0900] [10426] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:37:55 +0900] [10426] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:37:55 +0900] [10426] [ERROR] Retrying in 1 second.
+[2021-08-26 18:37:56 +0900] [10426] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:37:56 +0900] [10426] [ERROR] Retrying in 1 second.
+[2021-08-26 18:37:57 +0900] [10426] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:37:57 +0900] [10426] [ERROR] Retrying in 1 second.
+[2021-08-26 18:37:58 +0900] [10426] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:37:58 +0900] [10426] [ERROR] Retrying in 1 second.
+[2021-08-26 18:37:59 +0900] [10426] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:37:59 +0900] [10426] [ERROR] Retrying in 1 second.
+[2021-08-26 18:38:00 +0900] [10426] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-08-26 18:38:13 +0900] [10510] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:38:13 +0900] [10510] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:38:13 +0900] [10510] [ERROR] Retrying in 1 second.
+[2021-08-26 18:38:14 +0900] [10510] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:38:14 +0900] [10510] [ERROR] Retrying in 1 second.
+[2021-08-26 18:38:15 +0900] [10510] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:38:15 +0900] [10510] [ERROR] Retrying in 1 second.
+[2021-08-26 18:38:16 +0900] [10510] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:38:16 +0900] [10510] [ERROR] Retrying in 1 second.
+[2021-08-26 18:38:17 +0900] [10510] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-26 18:38:17 +0900] [10510] [ERROR] Retrying in 1 second.
+[2021-08-26 18:38:18 +0900] [10510] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-08-26 18:38:30 +0900] [7332] [INFO] Worker exiting (pid: 7332)
+[2021-08-26 18:38:30 +0900] [7329] [INFO] Handling signal: term
+[2021-08-26 18:38:31 +0900] [7329] [INFO] Shutting down: Master
+[2021-08-26 18:38:32 +0900] [10598] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:38:32 +0900] [10598] [INFO] Listening at: http://0.0.0.0:8000 (10598)
+[2021-08-26 18:38:32 +0900] [10598] [INFO] Using worker: sync
+[2021-08-26 18:38:32 +0900] [10601] [INFO] Booting worker with pid: 10601
+[2021-08-26 18:38:38,440] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 65, in predict
+    return jsonify({ 'picture_vector': vertorlist , 'picture_norm' : str(result[1]) })
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 351, in jsonify
+    dumps(data, indent=indent, separators=separators) + '\n',
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 194, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.6/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 81, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'ndarray' is not JSON serializable
+[2021-08-26 18:38:51 +0900] [10601] [INFO] Worker exiting (pid: 10601)
+[2021-08-26 18:38:51 +0900] [10598] [INFO] Handling signal: term
+[2021-08-26 18:38:51 +0900] [10598] [INFO] Shutting down: Master
+[2021-08-26 18:38:52 +0900] [10734] [INFO] Starting gunicorn 20.1.0
+[2021-08-26 18:38:52 +0900] [10734] [INFO] Listening at: http://0.0.0.0:8000 (10734)
+[2021-08-26 18:38:52 +0900] [10734] [INFO] Using worker: sync
+[2021-08-26 18:38:52 +0900] [10737] [INFO] Booting worker with pid: 10737
+[2021-08-30 14:26:49,270] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 37, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 20, in select_vector
+    mycursor.execute(sql, adr)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-08-30 14:26:57,722] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 21, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 26, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-08-30 14:27:02,124] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 21, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 26, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-08-30 14:28:57,971] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 21, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 26, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-08-30 14:30:44,755] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 37, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 20, in select_vector
+    mycursor.execute(sql, adr)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-08-30 14:30:46,315] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 37, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 20, in select_vector
+    mycursor.execute(sql, adr)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-08-30 14:31:27 +0900] [4826] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 14:31:27 +0900] [4826] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-30 14:31:27 +0900] [4826] [ERROR] Retrying in 1 second.
+[2021-08-30 14:31:28 +0900] [4826] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-30 14:31:28 +0900] [4826] [ERROR] Retrying in 1 second.
+[2021-08-30 14:31:29 +0900] [4826] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-30 14:31:29 +0900] [4826] [ERROR] Retrying in 1 second.
+[2021-08-30 14:31:30 +0900] [4826] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-30 14:31:30 +0900] [4826] [ERROR] Retrying in 1 second.
+[2021-08-30 14:31:31 +0900] [4826] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-30 14:31:31 +0900] [4826] [ERROR] Retrying in 1 second.
+[2021-08-30 14:31:32 +0900] [4826] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-08-30 14:31:46 +0900] [10737] [INFO] Worker exiting (pid: 10737)
+[2021-08-30 14:31:46 +0900] [10734] [INFO] Handling signal: term
+[2021-08-30 14:31:46 +0900] [10734] [WARNING] Worker with pid 10737 was terminated due to signal 15
+[2021-08-30 14:31:46 +0900] [10734] [INFO] Shutting down: Master
+[2021-08-30 14:31:50 +0900] [4918] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 14:31:50 +0900] [4918] [INFO] Listening at: http://0.0.0.0:8000 (4918)
+[2021-08-30 14:31:50 +0900] [4918] [INFO] Using worker: sync
+[2021-08-30 14:31:50 +0900] [4921] [INFO] Booting worker with pid: 4921
+[2021-08-30 15:35:34 +0900] [4921] [INFO] Worker exiting (pid: 4921)
+[2021-08-30 15:35:34 +0900] [4918] [INFO] Handling signal: term
+[2021-08-30 15:35:35 +0900] [4918] [INFO] Shutting down: Master
+[2021-08-30 15:35:36 +0900] [13644] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 15:35:36 +0900] [13644] [INFO] Listening at: http://0.0.0.0:8000 (13644)
+[2021-08-30 15:35:36 +0900] [13644] [INFO] Using worker: sync
+[2021-08-30 15:35:36 +0900] [13647] [INFO] Booting worker with pid: 13647
+[2021-08-30 16:57:51 +0900] [13647] [INFO] Worker exiting (pid: 13647)
+[2021-08-30 16:57:51 +0900] [13644] [INFO] Handling signal: term
+[2021-08-30 16:57:51 +0900] [13644] [WARNING] Worker with pid 13647 was terminated due to signal 11
+[2021-08-30 16:57:51 +0900] [13644] [INFO] Shutting down: Master
+[2021-08-30 16:57:52 +0900] [25906] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 16:57:52 +0900] [25906] [INFO] Listening at: http://0.0.0.0:8000 (25906)
+[2021-08-30 16:57:52 +0900] [25906] [INFO] Using worker: sync
+[2021-08-30 16:57:52 +0900] [25909] [INFO] Booting worker with pid: 25909
+[2021-08-30 19:53:08 +0900] [25906] [INFO] Handling signal: term
+[2021-08-30 19:53:08 +0900] [25909] [INFO] Worker exiting (pid: 25909)
+[2021-08-30 19:53:09 +0900] [25906] [INFO] Shutting down: Master
+[2021-08-30 19:53:10 +0900] [16231] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 19:53:10 +0900] [16231] [INFO] Listening at: http://0.0.0.0:8000 (16231)
+[2021-08-30 19:53:10 +0900] [16231] [INFO] Using worker: sync
+[2021-08-30 19:53:10 +0900] [16234] [INFO] Booting worker with pid: 16234
+[2021-08-30 19:53:17 +0900] [16231] [INFO] Handling signal: term
+[2021-08-30 19:53:17 +0900] [16234] [INFO] Worker exiting (pid: 16234)
+[2021-08-30 19:53:17 +0900] [16231] [INFO] Shutting down: Master
+[2021-08-30 19:53:18 +0900] [16285] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 19:53:18 +0900] [16285] [INFO] Listening at: http://0.0.0.0:8000 (16285)
+[2021-08-30 19:53:18 +0900] [16285] [INFO] Using worker: sync
+[2021-08-30 19:53:18 +0900] [16288] [INFO] Booting worker with pid: 16288
+[2021-08-30 20:04:50 +0900] [16285] [INFO] Handling signal: term
+[2021-08-30 20:04:50 +0900] [16288] [INFO] Worker exiting (pid: 16288)
+[2021-08-30 20:04:51 +0900] [16285] [INFO] Shutting down: Master
+[2021-08-30 20:04:51 +0900] [17004] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 20:04:51 +0900] [17004] [INFO] Listening at: http://0.0.0.0:8000 (17004)
+[2021-08-30 20:04:51 +0900] [17004] [INFO] Using worker: sync
+[2021-08-30 20:04:51 +0900] [17007] [INFO] Booting worker with pid: 17007
+[2021-08-30 20:06:11 +0900] [17004] [INFO] Handling signal: term
+[2021-08-30 20:06:11 +0900] [17007] [INFO] Worker exiting (pid: 17007)
+[2021-08-30 20:06:11 +0900] [17004] [INFO] Shutting down: Master
+[2021-08-30 20:06:12 +0900] [17118] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 20:06:12 +0900] [17118] [INFO] Listening at: http://0.0.0.0:8000 (17118)
+[2021-08-30 20:06:12 +0900] [17118] [INFO] Using worker: sync
+[2021-08-30 20:06:12 +0900] [17121] [INFO] Booting worker with pid: 17121
+[2021-08-30 20:06:15,220] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 63, in predict
+    return jsonify({ 'picture_vector': vertorlist, 'picture_norm' : str(result[1]) })
+IndexError: string index out of range
+[2021-08-30 20:06:45 +0900] [17118] [INFO] Handling signal: term
+[2021-08-30 20:06:45 +0900] [17121] [INFO] Worker exiting (pid: 17121)
+[2021-08-30 20:06:46 +0900] [17118] [INFO] Shutting down: Master
+[2021-08-30 20:06:46 +0900] [17190] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 20:06:46 +0900] [17190] [INFO] Listening at: http://0.0.0.0:8000 (17190)
+[2021-08-30 20:06:46 +0900] [17190] [INFO] Using worker: sync
+[2021-08-30 20:06:46 +0900] [17193] [INFO] Booting worker with pid: 17193
+[2021-08-30 20:06:49,953] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 61, in predict
+    return jsonify({ 'picture_vector': str(result[0]), 'picture_norm' : str(result[1]) })
+IndexError: string index out of range
+[2021-08-30 20:14:37 +0900] [17190] [INFO] Handling signal: term
+[2021-08-30 20:14:37 +0900] [17193] [INFO] Worker exiting (pid: 17193)
+[2021-08-30 20:14:38 +0900] [17190] [INFO] Shutting down: Master
+[2021-08-30 20:14:38 +0900] [17510] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 20:14:38 +0900] [17510] [INFO] Listening at: http://0.0.0.0:8000 (17510)
+[2021-08-30 20:14:38 +0900] [17510] [INFO] Using worker: sync
+[2021-08-30 20:14:38 +0900] [17513] [INFO] Booting worker with pid: 17513
+[2021-08-30 20:16:48 +0900] [17513] [INFO] Worker exiting (pid: 17513)
+[2021-08-30 20:16:48 +0900] [17510] [INFO] Handling signal: term
+[2021-08-30 20:16:48 +0900] [17510] [INFO] Shutting down: Master
+[2021-08-30 20:16:49 +0900] [17596] [INFO] Starting gunicorn 20.1.0
+[2021-08-30 20:16:49 +0900] [17596] [INFO] Listening at: http://0.0.0.0:8000 (17596)
+[2021-08-30 20:16:49 +0900] [17596] [INFO] Using worker: sync
+[2021-08-30 20:16:49 +0900] [17599] [INFO] Booting worker with pid: 17599
+[2021-08-31 15:49:41,807] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 38, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 23, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-08-31 15:51:02 +0900] [17596] [INFO] Handling signal: term
+[2021-08-31 15:51:02 +0900] [17599] [INFO] Worker exiting (pid: 17599)
+[2021-08-31 15:51:03 +0900] [17596] [INFO] Shutting down: Master
+[2021-08-31 15:51:07 +0900] [27177] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 15:51:07 +0900] [27177] [INFO] Listening at: http://0.0.0.0:8000 (27177)
+[2021-08-31 15:51:07 +0900] [27177] [INFO] Using worker: sync
+[2021-08-31 15:51:07 +0900] [27181] [INFO] Booting worker with pid: 27181
+[2021-08-31 15:51:13,721] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 43, in Check_Similarity
+    convert_vector_list.append(vector_list[i].split(', '))
+AttributeError: 'NoneType' object has no attribute 'split'
+[2021-08-31 15:53:59,526] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 43, in Check_Similarity
+    convert_vector_list.append(vector_list[i].split(', '))
+AttributeError: 'NoneType' object has no attribute 'split'
+[2021-08-31 15:54:00,353] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 43, in Check_Similarity
+    convert_vector_list.append(vector_list[i].split(', '))
+AttributeError: 'NoneType' object has no attribute 'split'
+[2021-08-31 16:07:27,559] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 43, in Check_Similarity
+    convert_vector_list.append(vector_list[i].split(', '))
+AttributeError: 'NoneType' object has no attribute 'split'
+[2021-08-31 17:05:45 +0900] [27181] [INFO] Worker exiting (pid: 27181)
+[2021-08-31 17:05:45 +0900] [27177] [INFO] Handling signal: term
+[2021-08-31 17:05:46 +0900] [27177] [WARNING] Worker with pid 27181 was terminated due to signal 15
+[2021-08-31 17:05:46 +0900] [27177] [INFO] Shutting down: Master
+[2021-08-31 17:05:46 +0900] [29363] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:05:46 +0900] [29363] [INFO] Listening at: http://0.0.0.0:8000 (29363)
+[2021-08-31 17:05:46 +0900] [29363] [INFO] Using worker: sync
+[2021-08-31 17:05:46 +0900] [29366] [INFO] Booting worker with pid: 29366
+[2021-08-31 17:46:58 +0900] [29363] [INFO] Handling signal: term
+[2021-08-31 17:46:58 +0900] [29366] [INFO] Worker exiting (pid: 29366)
+[2021-08-31 17:46:58 +0900] [29363] [INFO] Shutting down: Master
+[2021-08-31 17:46:59 +0900] [32249] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:46:59 +0900] [32249] [INFO] Listening at: http://0.0.0.0:8000 (32249)
+[2021-08-31 17:46:59 +0900] [32249] [INFO] Using worker: sync
+[2021-08-31 17:46:59 +0900] [32252] [INFO] Booting worker with pid: 32252
+[2021-08-31 17:47:03,684] ERROR in app: Exception on /predict [POST]
+TypeError: float() argument must be a string or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 46, in Check_Similarity
+    convert_vector_list= np.array(convert_vector_list,dtype=float).reshape(-1)
+ValueError: setting an array element with a sequence.
+[2021-08-31 17:47:23 +0900] [32252] [INFO] Worker exiting (pid: 32252)
+[2021-08-31 17:47:23 +0900] [32249] [INFO] Handling signal: term
+[2021-08-31 17:47:23 +0900] [32249] [INFO] Shutting down: Master
+[2021-08-31 17:47:23 +0900] [32401] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:47:23 +0900] [32401] [INFO] Listening at: http://0.0.0.0:8000 (32401)
+[2021-08-31 17:47:23 +0900] [32401] [INFO] Using worker: sync
+[2021-08-31 17:47:23 +0900] [32404] [INFO] Booting worker with pid: 32404
+[2021-08-31 17:47:26,364] ERROR in app: Exception on /predict [POST]
+TypeError: float() argument must be a string or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 46, in Check_Similarity
+    convert_vector_list= np.array(convert_vector_list,dtype=float).reshape(-1)
+ValueError: setting an array element with a sequence.
+[2021-08-31 17:47:43 +0900] [32535] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:47:43 +0900] [32535] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-31 17:47:43 +0900] [32535] [ERROR] Retrying in 1 second.
+[2021-08-31 17:47:44 +0900] [32401] [INFO] Handling signal: term
+[2021-08-31 17:47:44 +0900] [32404] [INFO] Worker exiting (pid: 32404)
+[2021-08-31 17:47:44 +0900] [32535] [INFO] Listening at: http://0.0.0.0:8000 (32535)
+[2021-08-31 17:47:44 +0900] [32535] [INFO] Using worker: sync
+[2021-08-31 17:47:44 +0900] [32540] [INFO] Booting worker with pid: 32540
+[2021-08-31 17:47:45 +0900] [32401] [INFO] Shutting down: Master
+[2021-08-31 17:47:45 +0900] [32535] [INFO] Handling signal: term
+[2021-08-31 17:47:45 +0900] [32558] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:47:45 +0900] [32558] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-08-31 17:47:45 +0900] [32558] [ERROR] Retrying in 1 second.
+[2021-08-31 17:47:45 +0900] [32540] [INFO] Worker exiting (pid: 32540)
+[2021-08-31 17:47:45 +0900] [32535] [INFO] Shutting down: Master
+[2021-08-31 17:47:46 +0900] [32558] [INFO] Listening at: http://0.0.0.0:8000 (32558)
+[2021-08-31 17:47:46 +0900] [32558] [INFO] Using worker: sync
+[2021-08-31 17:47:46 +0900] [32569] [INFO] Booting worker with pid: 32569
+[2021-08-31 17:47:48,586] ERROR in app: Exception on /predict [POST]
+TypeError: float() argument must be a string or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 46, in Check_Similarity
+    convert_vector_list= np.array(convert_vector_list,dtype=float).reshape(-1)
+ValueError: setting an array element with a sequence.
+[2021-08-31 17:47:56,762] ERROR in app: Exception on /predict [POST]
+TypeError: float() argument must be a string or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 46, in Check_Similarity
+    convert_vector_list= np.array(convert_vector_list,dtype=float).reshape(-1)
+ValueError: setting an array element with a sequence.
+[2021-08-31 17:47:58 +0900] [32569] [INFO] Worker exiting (pid: 32569)
+[2021-08-31 17:47:58 +0900] [32558] [INFO] Handling signal: term
+[2021-08-31 17:47:58 +0900] [32558] [INFO] Shutting down: Master
+[2021-08-31 17:47:59 +0900] [32648] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:47:59 +0900] [32648] [INFO] Listening at: http://0.0.0.0:8000 (32648)
+[2021-08-31 17:47:59 +0900] [32648] [INFO] Using worker: sync
+[2021-08-31 17:47:59 +0900] [32651] [INFO] Booting worker with pid: 32651
+[2021-08-31 17:48:01,900] ERROR in app: Exception on /predict [POST]
+TypeError: float() argument must be a string or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 58, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 46, in Check_Similarity
+    convert_vector_list= np.array(convert_vector_list,dtype=float).reshape(-1)
+ValueError: setting an array element with a sequence.
+[2021-08-31 17:49:22 +0900] [32648] [INFO] Handling signal: term
+[2021-08-31 17:49:22 +0900] [32651] [INFO] Worker exiting (pid: 32651)
+[2021-08-31 17:49:22 +0900] [32648] [INFO] Shutting down: Master
+[2021-08-31 17:49:23 +0900] [645] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:49:23 +0900] [645] [INFO] Listening at: http://0.0.0.0:8000 (645)
+[2021-08-31 17:49:23 +0900] [645] [INFO] Using worker: sync
+[2021-08-31 17:49:23 +0900] [648] [INFO] Booting worker with pid: 648
+[2021-08-31 17:49:26,160] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 65, in predict
+    return jsonify({ 'picture_vector': vertorlist, 'picture_norm' : str(result[1]) })
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 351, in jsonify
+    dumps(data, indent=indent, separators=separators) + '\n',
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 194, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.6/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 81, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'builtin_function_or_method' is not JSON serializable
+[2021-08-31 17:49:59 +0900] [648] [INFO] Worker exiting (pid: 648)
+[2021-08-31 17:49:59 +0900] [645] [INFO] Handling signal: term
+[2021-08-31 17:49:59 +0900] [645] [INFO] Shutting down: Master
+[2021-08-31 17:50:00 +0900] [847] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:50:00 +0900] [847] [INFO] Listening at: http://0.0.0.0:8000 (847)
+[2021-08-31 17:50:00 +0900] [847] [INFO] Using worker: sync
+[2021-08-31 17:50:00 +0900] [852] [INFO] Booting worker with pid: 852
+[2021-08-31 17:50:45 +0900] [852] [INFO] Worker exiting (pid: 852)
+[2021-08-31 17:50:45 +0900] [847] [INFO] Handling signal: term
+[2021-08-31 17:50:45 +0900] [847] [INFO] Shutting down: Master
+[2021-08-31 17:50:45 +0900] [1038] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:50:45 +0900] [1038] [INFO] Listening at: http://0.0.0.0:8000 (1038)
+[2021-08-31 17:50:45 +0900] [1038] [INFO] Using worker: sync
+[2021-08-31 17:50:45 +0900] [1041] [INFO] Booting worker with pid: 1041
+[2021-08-31 17:50:49,062] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 65, in predict
+    return jsonify({ 'picture_vector': vertorlist, 'picture_norm' : str(result[1]) })
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 351, in jsonify
+    dumps(data, indent=indent, separators=separators) + '\n',
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 194, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.6/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.6/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.6/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/json/__init__.py", line 81, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python3.6/json/encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'builtin_function_or_method' is not JSON serializable
+[2021-08-31 17:50:57 +0900] [1038] [INFO] Handling signal: term
+[2021-08-31 17:50:57 +0900] [1041] [INFO] Worker exiting (pid: 1041)
+[2021-08-31 17:50:57 +0900] [1038] [INFO] Shutting down: Master
+[2021-08-31 17:50:58 +0900] [1205] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:50:58 +0900] [1205] [INFO] Listening at: http://0.0.0.0:8000 (1205)
+[2021-08-31 17:50:58 +0900] [1205] [INFO] Using worker: sync
+[2021-08-31 17:50:58 +0900] [1208] [INFO] Booting worker with pid: 1208
+[2021-08-31 17:51:21 +0900] [1205] [INFO] Handling signal: term
+[2021-08-31 17:51:21 +0900] [1208] [INFO] Worker exiting (pid: 1208)
+[2021-08-31 17:51:22 +0900] [1205] [INFO] Shutting down: Master
+[2021-08-31 17:51:22 +0900] [1435] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:51:22 +0900] [1435] [INFO] Listening at: http://0.0.0.0:8000 (1435)
+[2021-08-31 17:51:22 +0900] [1435] [INFO] Using worker: sync
+[2021-08-31 17:51:22 +0900] [1438] [INFO] Booting worker with pid: 1438
+[2021-08-31 17:51:50 +0900] [1438] [INFO] Worker exiting (pid: 1438)
+[2021-08-31 17:51:50 +0900] [1435] [INFO] Handling signal: term
+[2021-08-31 17:51:50 +0900] [1435] [INFO] Shutting down: Master
+[2021-08-31 17:51:51 +0900] [1577] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:51:51 +0900] [1577] [INFO] Listening at: http://0.0.0.0:8000 (1577)
+[2021-08-31 17:51:51 +0900] [1577] [INFO] Using worker: sync
+[2021-08-31 17:51:51 +0900] [1580] [INFO] Booting worker with pid: 1580
+[2021-08-31 17:52:10 +0900] [1580] [INFO] Worker exiting (pid: 1580)
+[2021-08-31 17:52:10 +0900] [1577] [INFO] Handling signal: term
+[2021-08-31 17:52:10 +0900] [1577] [INFO] Shutting down: Master
+[2021-08-31 17:52:10 +0900] [1780] [INFO] Starting gunicorn 20.1.0
+[2021-08-31 17:52:10 +0900] [1780] [INFO] Listening at: http://0.0.0.0:8000 (1780)
+[2021-08-31 17:52:10 +0900] [1780] [INFO] Using worker: sync
+[2021-08-31 17:52:10 +0900] [1795] [INFO] Booting worker with pid: 1795

@@ -2,45 +2,44 @@ import torch
 import torch.nn as nn
 import torchvision
 import torchvision.models as models
+# debugging 
+from PIL import Image
+import torchvision.transforms as transforms
 
-class Image_Similarity():
+class Image_Similarity(nn.Module):
 
     def __init__(self):
-        self.cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.old_model = models.vgg16(pretrained=True)
-        self.model = nn.Sequential(*(list(self.old_model.children())[0:1])).to(self.cuda)
-    
+        super(Image_Similarity, self).__init__()
+        self.layer1 = nn.Sequential(*(list(models.vgg16(pretrained=True).children())[0:1]))
+        self.layer2 = nn.AdaptiveAvgPool2d(output_size=(1, 1))
+
     def forward(self, x):
-        return self.model(x.unsqueeze(0))
-'''
-    # custom loss
-    def triplet_loss(self, anchor_img, pos_img, neg_img, margin):
-        distance1 = torch.sqrt(torch.sum(torch.pow((anchor_img - pos_img), 2))).to(self.cuda)
-        distance2 = torch.sqrt(torch.sum(torch.pow((anchor_img - neg_img), 2))).to(self.cuda)
-        # print('distance1 - distance2 : ', distance1 - distance2 + margin) 
-        values = max(distance1 - distance2 + margin, torch.Tensor([0]).to(self.cuda)) # torch.max는 return tuple로 두개 , tensor 중 가장 max 값 반환
-        print('result_max : ', values)
-        print(type(values))
-        return values
 
-        
-        ## type 변경
-        if type(values) == int:
-            return torch.FloatTensor(values)
-        elif type(values) == torch.Tensor :
-            return values
-'''
+        result = self.layer1(x.unsqueeze(0))
+        result = self.layer2(torch.squeeze(result))
+        return  result
 
 
-
+# debug
 if __name__ == '__main__':
-    
-    img_sim = Image_Similarity()
 
-    anchor_img = torch.FloatTensor([1,2]).to(img_sim.cuda)
-    pos_img = torch.FloatTensor([1,1]).to(img_sim.cuda)
-    neg_img = torch.FloatTensor([1,10]).to(img_sim.cuda)
+    cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    transform = transforms.Compose([
+        transforms.Resize((224,224)),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5))
+    ])
 
-    sim = img_sim.triplet_loss(anchor_img, pos_img, neg_img, 0.5)
+    image = Image.open('../../cat.jpeg')
+    image = transform(image).to(cuda)
+    print(image)
 
-    print(sim)
+    img_sim = Image_Similarity().to(cuda)
+    result = img_sim.forward(image)
+    result = result.view(-1, 512 * 1 * 1)
+    print('result: ', result)
+    print('result shape: ', result.squeeze().shape)
+
+    # model save
+    # torch.save(img_sim, '../My_model/New_Vgg_512.pt')
+

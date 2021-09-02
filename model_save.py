@@ -22,6 +22,11 @@ transform = transforms.Compose([
 
 model = models.vgg16(pretrained=True)
 New_model = nn.Sequential(*(list(model.children())[0:1]))
+#New_model = nn.Sequential(*(list(model.children())[0:1]),
+#                          torch.squeeze(1),
+#                          nn.AdaptiveAvgPool1d(output_size=1000)     
+#                          ) # 512 x 7 x 7
+print(New_model)
 New_model.eval()
 # example input
 
@@ -29,8 +34,11 @@ img_url = "https://www.sjpost.co.kr/news/photo/202007/53199_48342_4214.jpg"
 img = url_to_image(img_url)
 img = transform(img) # example input
 
+result = New_model(img.unsqueeze(0))
+print(result)
+print(result.shape)
 # model save
-torch.save(New_model, './My_model/New_Vgg_16.pt',  _use_new_zipfile_serialization=False )
+# torch.save(New_model, './My_model/New_Vgg_16.pt',  _use_new_zipfile_serialization=False )
 # traced_model = torch.jit.trace(New_model, img.unsqueeze(0))
 # traced_model.save("./New_Vgg_16.pt")
 

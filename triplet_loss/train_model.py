@@ -1,4 +1,5 @@
 import torch
+from torch import cuda
 import torch.optim  as optim
 import torch.nn  as nn
 from preprocess import PreProcessing
@@ -12,11 +13,14 @@ import pickle
 
 if __name__ == "__main__":
 
+    # torch cache 삭제
+    torch.cuda.empty_cache()
+    
     # 변수 설정
     data_scr = '../data/'
     ratio = 0.9
     batch_size = 16
-    train_iter = 70
+    train_iter = 61
     step = 50 # batch size당 몇번 학습
     lr = 0.0001 
     margin = 0.5
@@ -25,19 +29,20 @@ if __name__ == "__main__":
     train_loss_list = []
     val_loss_list = []
 
-    # data setUp & model Setup
+    # data & model & Gpu Setup
+    cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     Dataset = PreProcessing(data_scr, ratio)
-    image_sim = Image_Similarity()
+    image_sim = Image_Similarity().to(cuda)
     next_batch = Dataset.get_triplets_batch
     test_images = Dataset.images_test # validation image data
     test_labels = Dataset.labels_test # validation image data
 
     # model setting 
     triplet_loss = nn.TripletMarginLoss(margin=1.0, p=2)
-    optimizer = optim.SGD(image_sim.model.parameters(), lr = lr , momentum= 0.99)
+    optimizer = optim.SGD(image_sim.parameters(), lr = lr , momentum= 0.99)
 
     ## 초기 parameters 값
-    print('initail model parameter: {}'.format(image_sim.model.parameters()))
+    print('initail model parameter: {}'.format(image_sim.parameters()))
 
     # model train
     for epoch in range(train_iter):
@@ -46,7 +51,7 @@ if __name__ == "__main__":
         epoch_list.append(epoch)
         
         # model train mode
-        image_sim.model.train()
+        image_sim.train()
 
         anchor_images, pos_images, neg_images = next_batch(batch_size)
         val_anchor_images, val_pos_images, val_neg_images = next_batch(batch_size)
@@ -57,8 +62,8 @@ if __name__ == "__main__":
         for anchor_img, pos_img, neg_img in zip(anchor_images, pos_images, neg_images):
 
             optimizer.zero_grad() # gradient to zero
-
-            anchor_output = image_sim.forward(anchor_img)
+            # input network
+            anchor_output = image_sim.forward(anchor_img) # 512 * 1 * 1
             pos_output = image_sim.forward(pos_img)
             neg_output = image_sim.forward(neg_img)
             loss = triplet_loss(anchor_output, pos_output, neg_output)
@@ -78,7 +83,7 @@ if __name__ == "__main__":
         # validation
         if epoch % 20 == 0:
             val_epoch_list.append(epoch)
-            image_sim.model.eval()
+            image_sim.eval()
             with torch.no_grad():
                 for anchor_img, pos_img, neg_img in zip(val_anchor_images, val_pos_images, val_neg_images):
 
@@ -104,6 +109,7 @@ if __name__ == "__main__":
     print('epoch_lis :', epoch_list)
     print('val_epoch_list', val_epoch_list)
 
+    
     # error list save
     with open('./train_loss_list_3.txt', 'wb') as f:
         pickle.dump(train_loss_list, f)
@@ -136,14 +142,18 @@ if __name__ == "__main__":
 
     with torch.no_grad():
         for img, label in zip(test_images, test_labels):
+            # print('image_result: ', image_sim.forward(img))
             val_results.append(image_sim.forward(img).detach().cpu().numpy())
             val_labels.append(label)
 
-    val_results = np.concatenate(val_results)
+    # val_results = np.concatenate(val_results)
+    val_results = np.array(val_results)
     val_labels = np.array(test_labels)
 
-    # print('val_result : ', val_results)
-    # print('val_labels : ', val_labels)
+    print('val_result_shape: ', val_results.shape)
+    # print('val_result_0 : ', val_results[0])
+    print('val_labels : ', val_labels)
+
     for label in np.unique(val_labels):
         tmp = val_results[val_labels == label]
         #print('tmp type: ', type(tmp))
@@ -153,13 +163,13 @@ if __name__ == "__main__":
     plt.show()
 
     ## 초기 parameters 값
-    print('After train model parameter: {}'.format(image_sim.model.parameters()))
+    print('After train model parameter: {}'.format(image_sim.parameters()))
     
+
     ## model_save
     print('model_save')
-    torch.save(image_sim.model, '../My_model/train_Vgg_16_3.pt') # iter: 100
+    torch.save(image_sim , '../My_model/train_Vgg_512_3.pt') # iter: 200 -> 512_1, iter:141... -> 512_2, iter: 61 -> 512_3
     print("model save successfully")
-
 
              
 

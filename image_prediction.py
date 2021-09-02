@@ -26,7 +26,7 @@ class Image_Prediction():
 
         trans_image = self.transform(image).to(self.cuda)
         result = self.model(trans_image.unsqueeze(0))
-        result = result.view(-1, 512 * 7 * 7).cpu()
+        result = result.view(-1, 512 * 1 * 1).cpu()
         result = result.squeeze(0).detach().numpy()
 
         # result를 numpy 형식으로 반환
@@ -38,16 +38,20 @@ class Image_Prediction():
         vector_list = db_connection.select_vector(self.current_norm)
         
         # string to array 
+        '''
         convert_vector_list = []
         for i in range(len(vector_list)):
             convert_vector_list.append(vector_list[i].split(', '))
        
         # string array to float array 
         convert_vector_list= np.array(convert_vector_list,dtype=float).reshape(-1)
-
-        # vector 압축
+        '''
+        ''' vector 압축
         dense_vector = csr_matrix(self.current_vector).reshape(1,-1)
-        
+        print("dense_vector shape : ", dense_vector.shape )
+        '''
+        return self.current_vector, self.current_norm
+    '''
         for vector in convert_vector_list:
             var_sim = dot(self.current_vector, vector) / (norm(self.current_vector) * norm(vector))
 
@@ -61,7 +65,9 @@ class Image_Prediction():
 
         else :
             print('check : No')
-            return dense_vector.data, self.current_norm
+            #return dense_vector.data, self.current_norm
+            return self.current_vector, self.current_norm
+     '''
 
 '''
 if __name__ == '__main__':

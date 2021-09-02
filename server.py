@@ -13,7 +13,7 @@ import numpy
 app = Flask(__name__)
 imagenet_class_index = json.load(open('./imagenet_class_index.json'))
 
-PATH = './My_model/New_Vgg_16.pt'
+PATH = './My_model/New_Vgg_512.pt'
 #model = torch.load(PATH) 
 # PATH 수정 
 model = models.densenet121(pretrained=True)
@@ -60,15 +60,15 @@ def predict():
         if result == 'Y': 
             return jsonify({ 'result' : 'fail' })
         else :
-            with numpy.printoptions(threshold=numpy.inf):
-                vertorlist = str(result[0])
-            return jsonify({ 'picture_vector': vertorlist, 'picture_norm' : str(result[1]) })
+            #with numpy.printoptions(threshold=numpy.inf):
+            #    vertorlist = result[0].tolist()
+            return jsonify({ 'picture_vector': str(result[0].tolist()), 'picture_norm' : str(result[1]) })
         
 
 if __name__ == '__main__':
     # app.run()
-    #app.run(host='0.0.0.0')
-
+    app.run(host='0.0.0.0')
+'''
     image  = Image.open('./image.png')
     predict = Image_Prediction('./My_model/New_Vgg_16.pt', image)
     #with numpy.printoptions(threshold=numpy.inf):
@@ -76,9 +76,10 @@ if __name__ == '__main__':
     print('vertor_norm : ', predict.current_norm )
     result = predict.Check_Similarity()
     with numpy.printoptions(threshold=numpy.inf):
-        print("result : ", result[0])
-
-   
+        print("result : ", result[0].tolist())
+    with numpy.printoptions(threshold=numpy.inf):
+                vertorlist = result[0].tolist
+'''
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run
