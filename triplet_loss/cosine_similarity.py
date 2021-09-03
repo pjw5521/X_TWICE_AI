@@ -10,7 +10,7 @@ class Consine_Similarity():
         self.cuda = torch.device(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
         self.threshold = 0.8
         self.model = Image_Similarity()
-        self.model.load_state_dict(torch.load('../My_model/train_Vgg_512_1.pt', map_location="cuda:0"))
+        self.model.load_state_dict(torch.load(model_path, map_location="cuda:0"))
         self.model.to(self.cuda)
     
     # consine 유사도 구하기

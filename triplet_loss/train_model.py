@@ -10,7 +10,6 @@ from PIL import Image
 import pickle
 
 
-
 if __name__ == "__main__":
 
     # torch cache 삭제
@@ -20,8 +19,8 @@ if __name__ == "__main__":
     data_scr = '../data/'
     ratio = 0.9
     batch_size = 16
-    train_iter = 201
-    step = 50 # batch size당 몇번 학습
+    train_iter = 141
+    step = 50 # batch size당 몇번 학습 사용 x
     lr = 0.0001 
     margin = 0.5
     epoch_list = []
@@ -111,10 +110,10 @@ if __name__ == "__main__":
 
     
     # error list save
-    with open('./train_loss_list_1.txt', 'wb') as f:
+    with open('./train_loss_list_6.txt', 'wb') as f:
         pickle.dump(train_loss_list, f)
     
-    with open('./val_loss_list_1.txt', 'wb') as f:
+    with open('./val_loss_list_6.txt', 'wb') as f:
         pickle.dump(val_loss_list, f)
     
 
@@ -168,7 +167,10 @@ if __name__ == "__main__":
 
     ## model_save
     print('model_save')
-    torch.save(image_sim.state_dict() , '../My_model/train_Vgg_512_1.pt') # iter: 200 -> 512_1, iter:141... -> 512_2, iter: 61 -> 512_3
+    torch.save(image_sim.state_dict() , '../My_model/train_Vgg_512_6.pt') 
+    # (lr : 0.0001, iter: 200 -> 512_1), (r : 0.0001, iter:141... -> 512_2), (r : 0.0001, iter: 61 -> 512_3), lr을 0.0001보다 크게 할 때, loss: infinite
+    # (lr : 0.0002,iter: 141 -> 512_4), (lr : 0.0001,iter: 141 -> 512_4, batch-> 32 -> 512_5)
+    # (r : 0.0001, iter:141... -> 512_6)
     print("model save successfully")
 
              

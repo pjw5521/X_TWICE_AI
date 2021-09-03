@@ -80,9 +80,10 @@ class PreProcessing:
         images_noise = []
         train_labels = []
         noise_labels = []
+        # dir_name = []
 
         for dir in os.listdir(self.data_scr):
-            print(dir)
+            # dir_name.append(dir)
             try:
                 for pic in os.listdir(os.path.join(self.data_scr, dir)):
                     # label create

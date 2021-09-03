@@ -3687,3 +3687,434 @@ AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' fro
 [2021-09-03 13:22:26 +0900] [27540] [INFO] Handling signal: term
 [2021-09-03 13:22:26 +0900] [27543] [INFO] Worker exiting (pid: 27543)
 [2021-09-03 13:22:26 +0900] [27540] [INFO] Shutting down: Master
+[2021-09-03 17:10:30 +0900] [3859] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 17:10:30 +0900] [3859] [INFO] Listening at: http://0.0.0.0:8000 (3859)
+[2021-09-03 17:10:30 +0900] [3859] [INFO] Using worker: sync
+[2021-09-03 17:10:30 +0900] [3862] [INFO] Booting worker with pid: 3862
+[2021-09-03 18:01:13 +0900] [3862] [INFO] Worker exiting (pid: 3862)
+[2021-09-03 18:01:13 +0900] [3859] [INFO] Handling signal: term
+[2021-09-03 18:01:13 +0900] [3859] [WARNING] Worker with pid 3862 was terminated due to signal 15
+[2021-09-03 18:01:13 +0900] [3859] [INFO] Shutting down: Master
+[2021-09-03 18:01:17 +0900] [13592] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:01:17 +0900] [13592] [INFO] Listening at: http://0.0.0.0:8000 (13592)
+[2021-09-03 18:01:17 +0900] [13592] [INFO] Using worker: sync
+[2021-09-03 18:01:17 +0900] [13595] [INFO] Booting worker with pid: 13595
+[2021-09-03 18:03:24 +0900] [13595] [INFO] Worker exiting (pid: 13595)
+[2021-09-03 18:03:24 +0900] [13592] [INFO] Handling signal: term
+[2021-09-03 18:03:24 +0900] [13592] [INFO] Shutting down: Master
+[2021-09-03 18:03:25 +0900] [13944] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:03:25 +0900] [13944] [INFO] Listening at: http://0.0.0.0:8000 (13944)
+[2021-09-03 18:03:25 +0900] [13944] [INFO] Using worker: sync
+[2021-09-03 18:03:25 +0900] [13947] [INFO] Booting worker with pid: 13947
+[2021-09-03 18:05:09 +0900] [14024] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:05:09 +0900] [14024] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:09 +0900] [14024] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:10 +0900] [14024] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:10 +0900] [14024] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:11 +0900] [14024] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:11 +0900] [14024] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:12 +0900] [14024] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:12 +0900] [14024] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:13 +0900] [14024] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:13 +0900] [14024] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:14 +0900] [14024] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-09-03 18:05:37 +0900] [14046] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:05:37 +0900] [14046] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:37 +0900] [14046] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:38 +0900] [14046] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:38 +0900] [14046] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:39 +0900] [14046] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:39 +0900] [14046] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:40 +0900] [14046] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:40 +0900] [14046] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:41 +0900] [14046] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-09-03 18:05:41 +0900] [14046] [ERROR] Retrying in 1 second.
+[2021-09-03 18:05:42 +0900] [14046] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-09-03 18:06:38,227] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:06:55,346] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:10:48,656] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:16:40,407] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:23:50,290] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:24:12,545] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:37:05 +0900] [13944] [INFO] Handling signal: term
+[2021-09-03 18:37:05 +0900] [13947] [INFO] Worker exiting (pid: 13947)
+[2021-09-03 18:37:05 +0900] [13944] [INFO] Shutting down: Master
+[2021-09-03 18:37:07 +0900] [17471] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:37:07 +0900] [17471] [INFO] Listening at: http://0.0.0.0:8000 (17471)
+[2021-09-03 18:37:07 +0900] [17471] [INFO] Using worker: sync
+[2021-09-03 18:37:07 +0900] [17474] [INFO] Booting worker with pid: 17474
+[2021-09-03 18:37:09,665] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+NameError: name 'img' is not defined
+[2021-09-03 18:44:36,335] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+NameError: name 'img' is not defined
+[2021-09-03 18:44:40,059] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+NameError: name 'img' is not defined
+[2021-09-03 18:44:49 +0900] [17471] [INFO] Handling signal: term
+[2021-09-03 18:44:49 +0900] [17474] [INFO] Worker exiting (pid: 17474)
+[2021-09-03 18:44:49 +0900] [17471] [INFO] Shutting down: Master
+[2021-09-03 18:44:50 +0900] [18475] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:44:50 +0900] [18475] [INFO] Listening at: http://0.0.0.0:8000 (18475)
+[2021-09-03 18:44:50 +0900] [18475] [INFO] Using worker: sync
+[2021-09-03 18:44:50 +0900] [18478] [INFO] Booting worker with pid: 18478
+[2021-09-03 18:45:11,574] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:45:35,297] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 51, in predict
+    img = Image.open(file)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/PIL/Image.py", line 3024, in open
+    "cannot identify image file %r" % (filename if filename else fp)
+PIL.UnidentifiedImageError: cannot identify image file <FileStorage: 'Git 명령어.txt' ('text/plain')>
+[2021-09-03 18:46:42,047] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:47:02,389] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:49:29 +0900] [18478] [INFO] Worker exiting (pid: 18478)
+[2021-09-03 18:49:29 +0900] [18475] [INFO] Handling signal: term
+[2021-09-03 18:49:30 +0900] [18475] [INFO] Shutting down: Master
+[2021-09-03 18:49:30 +0900] [18970] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:49:30 +0900] [18970] [INFO] Listening at: http://0.0.0.0:8000 (18970)
+[2021-09-03 18:49:30 +0900] [18970] [INFO] Using worker: sync
+[2021-09-03 18:49:30 +0900] [18973] [INFO] Booting worker with pid: 18973
+[2021-09-03 18:49:35,568] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-03 18:50:34 +0900] [18973] [INFO] Worker exiting (pid: 18973)
+[2021-09-03 18:50:34 +0900] [18970] [INFO] Handling signal: term
+[2021-09-03 18:50:34 +0900] [18970] [INFO] Shutting down: Master
+[2021-09-03 18:50:34 +0900] [19159] [INFO] Starting gunicorn 20.1.0
+[2021-09-03 18:50:34 +0900] [19159] [INFO] Listening at: http://0.0.0.0:8000 (19159)
+[2021-09-03 18:50:34 +0900] [19159] [INFO] Using worker: sync
+[2021-09-03 18:50:34 +0900] [19162] [INFO] Booting worker with pid: 19162

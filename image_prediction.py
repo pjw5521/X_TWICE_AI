@@ -5,9 +5,6 @@ import torch
 import torchvision.transforms as transforms
 from PIL import Image
 import db_connection
-from scipy.sparse import csr_matrix 
-import sys
-import os
 from model import Image_Similarity
 
 class Image_Prediction():

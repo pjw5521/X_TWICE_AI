@@ -59,8 +59,10 @@ def predict():
             vectorlist= []
             for vector in result[0]:
                 vectorlist.append(truncate(vector,3))
-
-            return jsonify({ 'picture_vector': str(vectorlist), 'picture_norm' : str(result[1]) })
+            final = str(vectorlist)
+            final = final.replace("[","")
+            final = final.replace("]","")
+            return jsonify({ 'picture_vector': final, 'picture_norm' : str(result[1]) })
         
 
 # vector 값 자릿수 변경 
@@ -72,8 +74,8 @@ if __name__ == '__main__':
     # app.run()
     app.run(host='0.0.0.0')
 '''
-    image  = Image.open('./cat.jpg')
-    predict = Image_Prediction('./My_model/New_Vgg_16.pt', image)
+    image  = Image.open('./image.png')
+    predict = Image_Prediction(PATH, image)
     # model = torch.load('./My_model/train_Vgg_512_2.pt')
     #with numpy.printoptions(threshold=numpy.inf):
     #    print('predict current_vector :', predict.current_vector)
@@ -81,8 +83,14 @@ if __name__ == '__main__':
     if result == 'Y': 
         print("유사한 사진 존재")
     else :
-        print(result[0])
-'''
+        vectorlist= []
+        for vector in result[0]:
+            vectorlist.append(truncate(vector,3))
+        final = str(vectorlist)
+        final = final.replace("[","")
+        final= final.replace("]","")
+        print(final)
+''' 
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run
