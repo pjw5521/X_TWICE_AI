@@ -2,6 +2,7 @@ import torch
 import numpy as np
 from preprocess_test import PreProcessing
 from cosine_similarity import Consine_Similarity
+from model import Image_Similarity
 
 
 if __name__ == '__main__':
@@ -32,7 +33,7 @@ if __name__ == '__main__':
     train_vector = cosine_sim.return_vector(images_train)
     noise_vector = cosine_sim.return_vector(images_noise)
     print(len(train_vector))
-    print('noise_vector: ', len(noise_vector))
+    print('noise_vector: ', len(noise_vector[0]))
 
     ## circulate cosine_sim
 

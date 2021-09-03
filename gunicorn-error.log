@@ -3011,3 +3011,679 @@ TypeError: Object of type 'builtin_function_or_method' is not JSON serializable
 [2021-08-31 17:52:10 +0900] [1780] [INFO] Listening at: http://0.0.0.0:8000 (1780)
 [2021-08-31 17:52:10 +0900] [1780] [INFO] Using worker: sync
 [2021-08-31 17:52:10 +0900] [1795] [INFO] Booting worker with pid: 1795
+[2021-09-02 16:57:41 +0900] [25177] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 16:57:41 +0900] [25177] [INFO] Listening at: http://0.0.0.0:8000 (25177)
+[2021-09-02 16:57:41 +0900] [25177] [INFO] Using worker: sync
+[2021-09-02 16:57:41 +0900] [25180] [INFO] Booting worker with pid: 25180
+[2021-09-02 16:59:37,384] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 16:59:50 +0900] [25180] [INFO] Worker exiting (pid: 25180)
+[2021-09-02 16:59:50 +0900] [25177] [INFO] Handling signal: term
+[2021-09-02 16:59:50 +0900] [25177] [INFO] Shutting down: Master
+[2021-09-02 16:59:51 +0900] [25613] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 16:59:51 +0900] [25613] [INFO] Listening at: http://0.0.0.0:8000 (25613)
+[2021-09-02 16:59:51 +0900] [25613] [INFO] Using worker: sync
+[2021-09-02 16:59:51 +0900] [25616] [INFO] Booting worker with pid: 25616
+[2021-09-02 16:59:52,416] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:00:34 +0900] [25616] [INFO] Worker exiting (pid: 25616)
+[2021-09-02 17:00:34 +0900] [25613] [INFO] Handling signal: term
+[2021-09-02 17:00:35 +0900] [25613] [INFO] Shutting down: Master
+[2021-09-02 17:00:35 +0900] [25845] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:00:35 +0900] [25845] [INFO] Listening at: http://0.0.0.0:8000 (25845)
+[2021-09-02 17:00:35 +0900] [25845] [INFO] Using worker: sync
+[2021-09-02 17:00:35 +0900] [25848] [INFO] Booting worker with pid: 25848
+[2021-09-02 17:00:37,088] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:02:21 +0900] [25845] [INFO] Handling signal: term
+[2021-09-02 17:02:21 +0900] [25848] [INFO] Worker exiting (pid: 25848)
+[2021-09-02 17:02:21 +0900] [25845] [INFO] Shutting down: Master
+[2021-09-02 17:02:21 +0900] [26456] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:02:21 +0900] [26456] [INFO] Listening at: http://0.0.0.0:8000 (26456)
+[2021-09-02 17:02:21 +0900] [26456] [INFO] Using worker: sync
+[2021-09-02 17:02:21 +0900] [26459] [INFO] Booting worker with pid: 26459
+[2021-09-02 17:02:23,252] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:02:42,195] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:02:47 +0900] [26459] [INFO] Worker exiting (pid: 26459)
+[2021-09-02 17:02:47 +0900] [26456] [INFO] Handling signal: term
+[2021-09-02 17:02:48 +0900] [26456] [INFO] Shutting down: Master
+[2021-09-02 17:02:48 +0900] [26607] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:02:48 +0900] [26607] [INFO] Listening at: http://0.0.0.0:8000 (26607)
+[2021-09-02 17:02:48 +0900] [26607] [INFO] Using worker: sync
+[2021-09-02 17:02:48 +0900] [26611] [INFO] Booting worker with pid: 26611
+[2021-09-02 17:02:49,844] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:02:59 +0900] [26607] [INFO] Handling signal: term
+[2021-09-02 17:02:59 +0900] [26611] [INFO] Worker exiting (pid: 26611)
+[2021-09-02 17:02:59 +0900] [26607] [INFO] Shutting down: Master
+[2021-09-02 17:03:00 +0900] [26682] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:03:00 +0900] [26682] [INFO] Listening at: http://0.0.0.0:8000 (26682)
+[2021-09-02 17:03:00 +0900] [26682] [INFO] Using worker: sync
+[2021-09-02 17:03:00 +0900] [26685] [INFO] Booting worker with pid: 26685
+[2021-09-02 17:03:02,288] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:03:13 +0900] [26685] [INFO] Worker exiting (pid: 26685)
+[2021-09-02 17:03:13 +0900] [26682] [INFO] Handling signal: term
+[2021-09-02 17:03:13 +0900] [26682] [INFO] Shutting down: Master
+[2021-09-02 17:03:14 +0900] [26761] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:03:14 +0900] [26761] [INFO] Listening at: http://0.0.0.0:8000 (26761)
+[2021-09-02 17:03:14 +0900] [26761] [INFO] Using worker: sync
+[2021-09-02 17:03:14 +0900] [26764] [INFO] Booting worker with pid: 26764
+[2021-09-02 17:03:15,395] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:06:31 +0900] [26761] [INFO] Handling signal: term
+[2021-09-02 17:06:31 +0900] [26764] [INFO] Worker exiting (pid: 26764)
+[2021-09-02 17:06:31 +0900] [26761] [INFO] Shutting down: Master
+[2021-09-02 17:06:31 +0900] [27147] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:06:31 +0900] [27147] [INFO] Listening at: http://0.0.0.0:8000 (27147)
+[2021-09-02 17:06:31 +0900] [27147] [INFO] Using worker: sync
+[2021-09-02 17:06:31 +0900] [27150] [INFO] Booting worker with pid: 27150
+[2021-09-02 17:06:33,628] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:03 +0900] [27147] [INFO] Handling signal: term
+[2021-09-02 17:07:03 +0900] [27150] [INFO] Worker exiting (pid: 27150)
+[2021-09-02 17:07:03 +0900] [27147] [INFO] Shutting down: Master
+[2021-09-02 17:07:05 +0900] [27279] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:07:05 +0900] [27279] [INFO] Listening at: http://0.0.0.0:8000 (27279)
+[2021-09-02 17:07:05 +0900] [27279] [INFO] Using worker: sync
+[2021-09-02 17:07:05 +0900] [27284] [INFO] Booting worker with pid: 27284
+[2021-09-02 17:07:06,388] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:08,489] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:09,051] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:09,669] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:10,890] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:11,906] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:12,607] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:12,989] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:13,234] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:13,409] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:13,730] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:14,283] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:24,137] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:07:31,639] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:08:11 +0900] [27284] [INFO] Worker exiting (pid: 27284)
+[2021-09-02 17:08:11 +0900] [27279] [INFO] Handling signal: term
+[2021-09-02 17:08:11 +0900] [27279] [INFO] Shutting down: Master
+[2021-09-02 17:08:11 +0900] [27395] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:08:11 +0900] [27395] [INFO] Listening at: http://0.0.0.0:8000 (27395)
+[2021-09-02 17:08:11 +0900] [27395] [INFO] Using worker: sync
+[2021-09-02 17:08:11 +0900] [27398] [INFO] Booting worker with pid: 27398
+[2021-09-02 17:08:13,076] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:08:47 +0900] [27398] [INFO] Worker exiting (pid: 27398)
+[2021-09-02 17:08:47 +0900] [27395] [INFO] Handling signal: term
+[2021-09-02 17:08:47 +0900] [27395] [WARNING] Worker with pid 27398 was terminated due to signal 15
+[2021-09-02 17:08:47 +0900] [27395] [INFO] Shutting down: Master
+[2021-09-02 17:08:48 +0900] [27540] [INFO] Starting gunicorn 20.1.0
+[2021-09-02 17:08:48 +0900] [27540] [INFO] Listening at: http://0.0.0.0:8000 (27540)
+[2021-09-02 17:08:48 +0900] [27540] [INFO] Using worker: sync
+[2021-09-02 17:08:48 +0900] [27543] [INFO] Booting worker with pid: 27543
+[2021-09-02 17:08:50,072] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-02 17:08:51,657] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 57, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 15, in __init__
+    self.model = torch.load(model_path).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 592, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/serialization.py", line 851, in _load
+    result = unpickler.load()
+AttributeError: Can't get attribute 'Image_Similarity' on <module '__main__' from '/home/uosselab/.local/bin/gunicorn'>
+[2021-09-03 13:22:26 +0900] [27540] [INFO] Handling signal: term
+[2021-09-03 13:22:26 +0900] [27543] [INFO] Worker exiting (pid: 27543)
+[2021-09-03 13:22:26 +0900] [27540] [INFO] Shutting down: Master

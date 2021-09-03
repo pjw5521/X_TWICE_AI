@@ -16,8 +16,8 @@ imagenet_class_index = json.load(open('./imagenet_class_index.json'))
 PATH = './My_model/New_Vgg_512.pt'
 #model = torch.load(PATH) 
 # PATH 수정 
-model = models.densenet121(pretrained=True)
-model.eval()
+#model = models.densenet121(pretrained=True)
+#model.eval()
 
 
 def transform_image(image_bytes):
@@ -46,39 +46,42 @@ def get_prediction(image_bytes):
 def predict():
     # print(request)
     if request.method == 'POST':
-        #print(request.files)
+
         file = request.files['file']
-        #img_bytes = file.read()
         img = Image.open(file)
-        #image  = Image.open('./image.png')
-        #class_id, class_name = get_prediction(image_bytes=img_bytes)
-        #return jsonify({'class_id': class_id, 'class_name': class_name})
-        #prediction = Image_Prediction(PATH, image_bytes=img_bytes)
+
         prediction = Image_Prediction(PATH, img)
         result = prediction.Check_Similarity()
        
         if result == 'Y': 
             return jsonify({ 'result' : 'fail' })
         else :
-            #with numpy.printoptions(threshold=numpy.inf):
-            #    vertorlist = result[0].tolist()
-            return jsonify({ 'picture_vector': str(result[0].tolist()), 'picture_norm' : str(result[1]) })
+            vectorlist= []
+            for vector in result[0]:
+                vectorlist.append(truncate(vector,3))
+
+            return jsonify({ 'picture_vector': str(vectorlist), 'picture_norm' : str(result[1]) })
         
+
+# vector 값 자릿수 변경 
+def truncate(num, n):
+    integer = int(num * (10**n))/(10**n)
+    return float(integer)
 
 if __name__ == '__main__':
     # app.run()
     app.run(host='0.0.0.0')
 '''
-    image  = Image.open('./image.png')
+    image  = Image.open('./cat.jpg')
     predict = Image_Prediction('./My_model/New_Vgg_16.pt', image)
+    # model = torch.load('./My_model/train_Vgg_512_2.pt')
     #with numpy.printoptions(threshold=numpy.inf):
     #    print('predict current_vector :', predict.current_vector)
-    print('vertor_norm : ', predict.current_norm )
     result = predict.Check_Similarity()
-    with numpy.printoptions(threshold=numpy.inf):
-        print("result : ", result[0].tolist())
-    with numpy.printoptions(threshold=numpy.inf):
-                vertorlist = result[0].tolist
+    if result == 'Y': 
+        print("유사한 사진 존재")
+    else :
+        print(result[0])
 '''
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:

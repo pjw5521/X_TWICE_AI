@@ -32,14 +32,20 @@ if __name__ == '__main__':
 
     image = Image.open('../../cat.jpeg')
     image = transform(image).to(cuda)
-    print(image)
+    #print(image)
 
-    img_sim = Image_Similarity().to(cuda)
-    result = img_sim.forward(image)
-    result = result.view(-1, 512 * 1 * 1)
-    print('result: ', result)
-    print('result shape: ', result.squeeze().shape)
+    img_sim = Image_Similarity()
+    print(img_sim.state_dict())
 
     # model save
-    # torch.save(img_sim, '../My_model/New_Vgg_512.pt')
+    print("model save")
+    torch.save(img_sim.state_dict(), '../My_model/New_Vgg_512.pt')
 
+    '''
+    m_state_dict = torch.load('./My_model_New_Vgg_512.pt')
+    model = Image_Similarity()
+    model.load_state_dict(m_state_dict)
+    
+    '''
+
+    

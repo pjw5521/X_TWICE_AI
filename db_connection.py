@@ -17,7 +17,7 @@ def select_vector(vector_norm):
   
   #adr =  ( first, last )
 
-  sql = "SELECT picture_vector FROM Pictures where picture_price = 12 or token_id = '2343611'"
+  sql = "SELECT picture_vector FROM Pictures where token_id = '2343444' or token_id = '2343504'"
   #sql = "SELECT picture_vector FROM Pictures"
   #sql = "SELECT picture_vector FROM Pictures WHERE picture_norm BETWEEN %s AND %s"
   
@@ -30,6 +30,7 @@ def select_vector(vector_norm):
   for x in myresult:
     final.append(x[0])
 
+  print("final", final)
   return final
   
   

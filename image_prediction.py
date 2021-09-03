@@ -7,12 +7,17 @@ from PIL import Image
 import db_connection
 from scipy.sparse import csr_matrix 
 import sys
+import os
+from model import Image_Similarity
+
 class Image_Prediction():
 
     def __init__(self, model_path, image):
 
         self.cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.model = torch.load(model_path).to(self.cuda)
+        self.model = Image_Similarity()
+        self.model.load_state_dict(torch.load(model_path, map_location="cuda:0"))
+        self.model.to(self.cuda)
         self.transform = transforms.Compose([
         transforms.Resize((224,224)),
         transforms.ToTensor(),
@@ -25,7 +30,7 @@ class Image_Prediction():
     def GetFeatureVector(self, image):
 
         trans_image = self.transform(image).to(self.cuda)
-        result = self.model(trans_image.unsqueeze(0))
+        result = self.model(trans_image)
         result = result.view(-1, 512).cpu()
         result = result.squeeze(0).detach().numpy()
 
@@ -44,18 +49,19 @@ class Image_Prediction():
         
         # string array to float array 
         convert_vector_list= np.array(convert_vector_list,dtype=float)
-        print(convert_vector_list)
+        #print(convert_vector_list)
+        print(convert_vector_list.shape)
         ''' vector 압축
         dense_vector = csr_matrix(self.current_vector).reshape(1,-1)
         print("dense_vector shape : ", dense_vector.shape )
         '''
-
+        
         #차원 맞추기 
         for vector in convert_vector_list:
             var_sim = dot(self.current_vector, vector) / (norm(self.current_vector) * norm(vector))
-
+            print("var sim ", var_sim)
             # 유사한 경우 
-            if var_sim.any() > self.threshold:
+            if var_sim > self.threshold:
                 check = True
 
         if check == True:
@@ -66,7 +72,7 @@ class Image_Prediction():
             print('check : No')
             #return dense_vector.data, self.current_norm
             return self.current_vector, self.current_norm
-
+        
 '''
 if __name__ == '__main__':
 

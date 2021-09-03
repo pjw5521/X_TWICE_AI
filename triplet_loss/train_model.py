@@ -20,7 +20,7 @@ if __name__ == "__main__":
     data_scr = '../data/'
     ratio = 0.9
     batch_size = 16
-    train_iter = 61
+    train_iter = 201
     step = 50 # batch size당 몇번 학습
     lr = 0.0001 
     margin = 0.5
@@ -111,10 +111,10 @@ if __name__ == "__main__":
 
     
     # error list save
-    with open('./train_loss_list_3.txt', 'wb') as f:
+    with open('./train_loss_list_1.txt', 'wb') as f:
         pickle.dump(train_loss_list, f)
     
-    with open('./val_loss_list_3.txt', 'wb') as f:
+    with open('./val_loss_list_1.txt', 'wb') as f:
         pickle.dump(val_loss_list, f)
     
 
@@ -168,7 +168,7 @@ if __name__ == "__main__":
 
     ## model_save
     print('model_save')
-    torch.save(image_sim , '../My_model/train_Vgg_512_3.pt') # iter: 200 -> 512_1, iter:141... -> 512_2, iter: 61 -> 512_3
+    torch.save(image_sim.state_dict() , '../My_model/train_Vgg_512_1.pt') # iter: 200 -> 512_1, iter:141... -> 512_2, iter: 61 -> 512_3
     print("model save successfully")
 
              
