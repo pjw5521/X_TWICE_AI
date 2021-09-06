@@ -21,7 +21,7 @@ if __name__ == "__main__":
     batch_size = 16
     train_iter = 141
     step = 50 # batch size당 몇번 학습 사용 x
-    lr = 0.0001 
+    lr = 0.005 
     margin = 0.5
     epoch_list = []
     val_epoch_list = []
@@ -66,14 +66,17 @@ if __name__ == "__main__":
             pos_output = image_sim.forward(pos_img)
             neg_output = image_sim.forward(neg_img)
             y = torch.ones_like(anchor_output.view(-1, 512* 2 * 1))
+            
             pos_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), pos_output.view(-1, 512* 2* 1),  y)
             neg_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), neg_output.view(-1, 512* 2* 1), -1 * y)
+            
             # debug
-            print("pos_loss: ", pos_loss)
-            print("neg_loss: ", neg_loss)
+            # print("pos_loss: ", pos_loss)
+            # print("neg_loss: ", neg_loss)
 
-            loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), pos_output.view(-1, 512* 2* 1),  y) + cosine_loss(anchor_output.view(-1, 512* 2 * 1), neg_output.view(-1, 512* 2* 1), -1 * y)
+            loss = torch.mean(pos_loss) + torch.mean(neg_loss)
             batch_train_loss += loss
+            
             # print('epoch: {} , loss: {}'.format(epoch, loss))
 
             if not torch.isfinite(loss):
@@ -98,7 +101,11 @@ if __name__ == "__main__":
                     val_pos_output = image_sim.forward(pos_img)
                     val_neg_output = image_sim.forward(neg_img)
 
-                    v_loss = cosine_loss(val_anchor_output.view(-1, 5112* 2 * 1), val_pos_output.view(-1, 512* 2* 1),  y) + cosine_loss(val_anchor_output.view(-1, 5112* 2 * 1), val_neg_output.view(-1, 512* 2* 1), -1 * y)
+                    v_pos_loss = cosine_loss(val_anchor_output.view(-1, 512* 2 * 1), val_pos_output.view(-1, 512* 2* 1),  y) 
+                    v_neg_loss = cosine_loss(val_anchor_output.view(-1, 512* 2 * 1), val_neg_output.view(-1, 512* 2* 1), -1 * y)
+
+                    v_loss =  torch.mean(v_pos_loss) + torch.mean(v_neg_loss)
+
                     #v_loss = cosine_loss(val_anchor_output, val_pos_output, val_neg_output)
                     batch_val_loss += v_loss
                 
