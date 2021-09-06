@@ -3,7 +3,7 @@ from torch import cuda
 import torch.optim  as optim
 import torch.nn  as nn
 from preprocess import PreProcessing
-from model import Image_Similarity
+from model_2 import Image_Similarity
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     test_labels = Dataset.labels_test # validation image data
 
     # model setting 
-    triplet_loss = nn.TripletMarginLoss(margin=1.0, p=2)
+    cosine_loss = nn.CosineEmbeddingLoss(reduction='none')
     optimizer = optim.SGD(image_sim.parameters(), lr = lr , momentum= 0.99)
 
     ## 초기 parameters 값
@@ -62,10 +62,17 @@ if __name__ == "__main__":
 
             optimizer.zero_grad() # gradient to zero
             # input network
-            anchor_output = image_sim.forward(anchor_img) # 512 * 1 * 1
+            anchor_output = image_sim.forward(anchor_img) # 512 * 2 * 1
             pos_output = image_sim.forward(pos_img)
             neg_output = image_sim.forward(neg_img)
-            loss = triplet_loss(anchor_output, pos_output, neg_output)
+            y = torch.ones_like(anchor_output.view(-1, 512* 2 * 1))
+            pos_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), pos_output.view(-1, 512* 2* 1),  y)
+            neg_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), neg_output.view(-1, 512* 2* 1), -1 * y)
+            # debug
+            print("pos_loss: ", pos_loss)
+            print("neg_loss: ", neg_loss)
+
+            loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), pos_output.view(-1, 512* 2* 1),  y) + cosine_loss(anchor_output.view(-1, 512* 2 * 1), neg_output.view(-1, 512* 2* 1), -1 * y)
             batch_train_loss += loss
             # print('epoch: {} , loss: {}'.format(epoch, loss))
 
@@ -91,7 +98,8 @@ if __name__ == "__main__":
                     val_pos_output = image_sim.forward(pos_img)
                     val_neg_output = image_sim.forward(neg_img)
 
-                    v_loss = triplet_loss(val_anchor_output, val_pos_output, val_neg_output)
+                    v_loss = cosine_loss(val_anchor_output.view(-1, 5112* 2 * 1), val_pos_output.view(-1, 512* 2* 1),  y) + cosine_loss(val_anchor_output.view(-1, 5112* 2 * 1), val_neg_output.view(-1, 512* 2* 1), -1 * y)
+                    #v_loss = cosine_loss(val_anchor_output, val_pos_output, val_neg_output)
                     batch_val_loss += v_loss
                 
                 val_loss_list.append((batch_val_loss / batch_size).detach().cpu().numpy())
@@ -110,10 +118,10 @@ if __name__ == "__main__":
 
     
     # error list save
-    with open('./train_loss_list_6.txt', 'wb') as f:
+    with open('./train_loss_list_3.txt', 'wb') as f:
         pickle.dump(train_loss_list, f)
     
-    with open('./val_loss_list_6.txt', 'wb') as f:
+    with open('./val_loss_list_3.txt', 'wb') as f:
         pickle.dump(val_loss_list, f)
     
 
@@ -167,10 +175,14 @@ if __name__ == "__main__":
 
     ## model_save
     print('model_save')
-    torch.save(image_sim.state_dict() , '../My_model/train_Vgg_512_6.pt') 
+    # torch.save(image_sim.state_dict() , '../My_model/cosine_Vgg_1.pt') 
     # (lr : 0.0001, iter: 200 -> 512_1), (r : 0.0001, iter:141... -> 512_2), (r : 0.0001, iter: 61 -> 512_3), lr을 0.0001보다 크게 할 때, loss: infinite
     # (lr : 0.0002,iter: 141 -> 512_4), (lr : 0.0001,iter: 141 -> 512_4, batch-> 32 -> 512_5)
     # (r : 0.0001, iter:141... -> 512_6)
+
+    ## Max
+    # (lr : 0.0001, iter:141... -> Max_Vgg_512_1), (lr : 0.0001, iter:201... -> Max_Vgg_512_2), (lr : 0.0002,iter: 141 -> 512_3)
+    # (lr : 0.0001,iter: 141 -> 512_4, batch-> 32 -> 512_4)
     print("model save successfully")
 
              

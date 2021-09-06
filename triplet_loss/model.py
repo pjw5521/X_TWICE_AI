@@ -11,12 +11,12 @@ class Image_Similarity(nn.Module):
     def __init__(self):
         super(Image_Similarity, self).__init__()
         self.layer1 = nn.Sequential(*(list(models.vgg16(pretrained=True).children())[0:1]))
-        self.layer2 = nn.AdaptiveAvgPool2d(output_size=(1, 1))
+        #self.layer2 = nn.AdaptiveAvgPool2d(output_size=(1, 1))
 
     def forward(self, x):
 
         result = self.layer1(x.unsqueeze(0))
-        result = self.layer2(torch.squeeze(result))
+        #result = self.layer2(torch.squeeze(result))
         return  result
 
 
@@ -34,12 +34,13 @@ if __name__ == '__main__':
     image = transform(image).to(cuda)
     #print(image)
 
-    img_sim = Image_Similarity()
-    print(img_sim.state_dict())
+    img_sim = Image_Similarity().to(cuda)
+    result = img_sim.forward(image)
+    result = result.view(-1, 512 * 7* 7 ).cpu()
+    result = result.squeeze(0).detach().numpy()
+    print('result: ', result)
+    print('result_shape: ', result.shape)
 
-    # model save
-    print("model save")
-    torch.save(img_sim.state_dict(), '../My_model/New_Vgg_512.pt')
 
     '''
     m_state_dict = torch.load('./My_model_New_Vgg_512.pt')

@@ -17,12 +17,17 @@ class Consine_Similarity():
     # 이때 들어오는 vector 값을 numpy array값으로 했다고 가정 
     def forward(self, vector1, vector2_list):
 
+        print("vector1: {}".format(vector1))
+        
         max_sim = []
         max_label = []
         
         # similarity 계산     
         for idx, vector2 in enumerate(vector2_list):
+            
             var_sim = dot(vector1, vector2 ) / (norm(vector1) * norm(vector2))
+            
+            # print("dot: {}, norm: {}".format(dot(vector1, vector2), norm(vector1) * norm(vector2)))
             # debug
             print("{} 의 similarity value: {}".format(idx, var_sim))
             
@@ -40,11 +45,13 @@ class Consine_Similarity():
     # 딥러닝 모델 Feature vector 반환
     def return_vector(self, img_list):
         
+        # print(self.model)
+        
         vector_list = []
         
         for img in img_list:
             result = self.model.forward(img)
-            result = result.view(-1, 512).cpu()
+            result = result.view(-1, 512 * 7* 7 ).cpu()
             result = result.squeeze(0).detach().numpy()
             vector_list.append(result)
         

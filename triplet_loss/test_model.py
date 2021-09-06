@@ -20,12 +20,12 @@ if __name__ == '__main__':
     # 변수 설정
     data_src = '../test/'
     ratio = 1.0 # 전체 test image를 가져와야함
-    model_path_1 = '../My_model/train_Vgg_512_1.pt'
-    model_path_2 = '../My_model/train_Vgg_512_2.pt'
-    model_path_3 = '../My_model/train_Vgg_512_3.pt'
-    model_path_4 = '../My_model/train_Vgg_512_4.pt'
-    model_path_5 = '../My_model/train_Vgg_512_5.pt'
-    model_path_6 = '../My_model/train_Vgg_512_6.pt'
+
+    model_path_1 = '../My_model/Max_Vgg_512_1.pt'
+    model_path_2 = '../My_model/Max_Vgg_512_2.pt'
+    model_path_3 = '../My_model/Max_Vgg_512_3.pt'
+    model_path_4 = '../My_model/Max_Vgg_512_4.pt'
+    model_path = '../My_model/Big_Vgg_2.pt'
 
     # data setting
     cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -43,21 +43,25 @@ if __name__ == '__main__':
     print('labels_noise: ', len(labels_noise))
 
     # model load
-    cosine_sim_1 = Consine_Similarity(model_path_1)
-    cosine_sim_2 = Consine_Similarity(model_path_6)
+    cosine_sim = Consine_Similarity(model_path)
+    # cosine_sim_1 = Consine_Similarity(model_path_1)
+    #cosine_sim_2 = Consine_Similarity(model_path_2)
+    #cosine_sim_3 = Consine_Similarity(model_path_3)
+    #cosine_sim_4 = Consine_Similarity(model_path_4)
 
-    train_vector_1 = cosine_sim_1.return_vector(images_train)
-    noise_vector_1 = cosine_sim_1.return_vector(images_noise)
-    train_vector_2 = cosine_sim_2.return_vector(images_train)
-    noise_vector_2 = cosine_sim_2.return_vector(images_noise)
+    train_vector_1 = cosine_sim.return_vector(images_train)
+    noise_vector_1 = cosine_sim.return_vector(images_noise)
 
-    print(len(train_vector_1))
-    print('noise_vector: ', len(noise_vector_2[0]))
+    print('train vector: ', train_vector_1[0])
+    print('noise_vector: ', noise_vector_1[0])
+
+    print("train_vector avg:", np.average(train_vector_1[0]))
+    print("noise_vectir: ", np.average(noise_vector_1[0]))
 
     ## circulate cosine_sim
-    image1_sim, image1_label = cosine_sim_2.forward(train_vector_2[0], noise_vector_2) 
-    print('image1_sim: ', image1_sim)
-    print('image1_label: ',image1_label)
+    image1_sim, image1_label = cosine_sim.forward(train_vector_1[0], noise_vector_1) 
+    # print('image1_sim: ', image1_sim)
+    # print('image1_label: ',image1_label)
 
 
 

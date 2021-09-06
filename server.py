@@ -13,7 +13,7 @@ import numpy
 app = Flask(__name__)
 imagenet_class_index = json.load(open('./imagenet_class_index.json'))
 
-PATH = './My_model/New_Vgg_512.pt'
+PATH = './My_model/Max_Vgg_512_2.pt'
 #model = torch.load(PATH) 
 # PATH 수정 
 #model = models.densenet121(pretrained=True)
@@ -48,11 +48,17 @@ def predict():
     if request.method == 'POST':
 
         file = request.files['file']
-        img = Image.open(file)
+        image = Image.open(file)
 
-        prediction = Image_Prediction(PATH, img)
+        temp = image.convert("RGB")
+
+        temp.save("image.jpg", "JPEG")
+
+        #return jsonify ({ 'result' : temp.format })
+        
+        prediction = Image_Prediction(PATH, temp)
         result = prediction.Check_Similarity()
-       
+        
         if result == 'Y': 
             return jsonify({ 'result' : 'fail' })
         else :
@@ -64,7 +70,6 @@ def predict():
             final = final.replace("]","")
             return jsonify({ 'picture_vector': final, 'picture_norm' : str(result[1]) })
         
-
 # vector 값 자릿수 변경 
 def truncate(num, n):
     integer = int(num * (10**n))/(10**n)
@@ -74,8 +79,12 @@ if __name__ == '__main__':
     # app.run()
     app.run(host='0.0.0.0')
 '''
-    image  = Image.open('./image.png')
-    predict = Image_Prediction(PATH, image)
+    image  = Image.open('./cat.jpg')
+    temp = image.convert("RGB")
+
+    temp.save("image.jpg", "JPEG")
+    
+    predict = Image_Prediction(PATH, temp)
     # model = torch.load('./My_model/train_Vgg_512_2.pt')
     #with numpy.printoptions(threshold=numpy.inf):
     #    print('predict current_vector :', predict.current_vector)
@@ -90,7 +99,8 @@ if __name__ == '__main__':
         final = final.replace("[","")
         final= final.replace("]","")
         print(final)
-''' 
+'''
+
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run

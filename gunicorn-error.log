@@ -4118,3 +4118,410 @@ RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at no
 [2021-09-03 18:50:34 +0900] [19159] [INFO] Listening at: http://0.0.0.0:8000 (19159)
 [2021-09-03 18:50:34 +0900] [19159] [INFO] Using worker: sync
 [2021-09-03 18:50:34 +0900] [19162] [INFO] Booting worker with pid: 19162
+[2021-09-04 18:12:47,716] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:13:00,868] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:13:16,629] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:13:20,846] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:13:46,596] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 53, in predict
+    prediction = Image_Prediction(PATH, img)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 24, in __init__
+    self.current_vector, self.current_norm = self.GetFeatureVector(image)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 29, in GetFeatureVector
+    trans_image = self.transform(image).to(self.cuda)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 221, in forward
+    return F.normalize(tensor, self.mean, self.std, self.inplace)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 336, in normalize
+    tensor.sub_(mean).div_(std)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 0
+[2021-09-04 18:14:13,464] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:14:38,334] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:14:48,409] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:16:43,170] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:17:39,819] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:17:46,413] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:23:35,634] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:23:40,522] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:26:02,714] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 18:48:54,116] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 20:33:56,938] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 54, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 40, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 24, in select_vector
+    mycursor.execute(sql)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/cursor_cext.py", line 957, in execute
+    self._cnx.cmd_stmt_reset(self._stmt)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 502, in cmd_stmt_reset
+    prep_stmt.stmt_reset()
+_mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during query
+[2021-09-04 20:34:38 +0900] [19162] [INFO] Worker exiting (pid: 19162)
+[2021-09-04 20:34:38 +0900] [19159] [INFO] Handling signal: term
+[2021-09-04 20:34:39 +0900] [19159] [INFO] Shutting down: Master

@@ -6,6 +6,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 import db_connection
 from model import Image_Similarity
+import os 
 
 class Image_Prediction():
 
@@ -25,10 +26,10 @@ class Image_Prediction():
 
     # image가 PIL image일 일때
     def GetFeatureVector(self, image):
-
+        
         trans_image = self.transform(image).to(self.cuda)
         result = self.model(trans_image)
-        result = result.view(-1, 512).cpu()
+        result = result.view(-1, 1024).cpu()
         result = result.squeeze(0).detach().numpy()
 
         # result를 numpy 형식으로 반환
@@ -45,14 +46,15 @@ class Image_Prediction():
             convert_vector_list.append(vector_list[i].split(', '))
         
         # string array to float array 
-        convert_vector_list= np.array(convert_vector_list,dtype=float)
+        convert_vector_list= np.array(convert_vector_list, dtype=float)
         #print(convert_vector_list)
-        print(convert_vector_list.shape)
+        print("current.vector shape", self.current_vector.shape)
         ''' vector 압축
         dense_vector = csr_matrix(self.current_vector).reshape(1,-1)
         print("dense_vector shape : ", dense_vector.shape )
         '''
-        
+        return self.current_vector, self.current_norm
+        '''
         #차원 맞추기 
         for vector in convert_vector_list:
             var_sim = dot(self.current_vector, vector) / (norm(self.current_vector) * norm(vector))
@@ -63,13 +65,15 @@ class Image_Prediction():
 
         if check == True:
             print("check : yes")
+            os.remove('image.jpg')
             return 'Y'
 
         else :
             print('check : No')
+            os.remove('image.jpg')
             #return dense_vector.data, self.current_norm
             return self.current_vector, self.current_norm
-        
+        '''
 '''
 if __name__ == '__main__':
 
