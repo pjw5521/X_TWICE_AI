@@ -2,7 +2,7 @@ import numpy as np
 from numpy import dot
 from numpy.linalg import norm
 import torch
-from model import Image_Similarity
+from model_2 import Image_Similarity
 
 class Consine_Similarity():
     
@@ -51,7 +51,7 @@ class Consine_Similarity():
         
         for img in img_list:
             result = self.model.forward(img)
-            result = result.view(-1, 512 * 7* 7 ).cpu()
+            result = result.view(-1, 512 * 2* 1 ).cpu()
             result = result.squeeze(0).detach().numpy()
             vector_list.append(result)
         

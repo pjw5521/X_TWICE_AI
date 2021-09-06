@@ -19,10 +19,10 @@ if __name__ == "__main__":
     data_scr = '../data/'
     ratio = 0.9
     batch_size = 16
-    train_iter = 141
+    train_iter = 501
     step = 50 # batch size당 몇번 학습 사용 x
-    lr = 0.005 
-    margin = 0.5
+    lr = 0.002 
+    margin = 0.1
     epoch_list = []
     val_epoch_list = []
     train_loss_list = []
@@ -65,7 +65,7 @@ if __name__ == "__main__":
             anchor_output = image_sim.forward(anchor_img) # 512 * 2 * 1
             pos_output = image_sim.forward(pos_img)
             neg_output = image_sim.forward(neg_img)
-            y = torch.ones_like(anchor_output.view(-1, 512* 2 * 1))
+            y = torch.ones(1).to(cuda)
             
             pos_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), pos_output.view(-1, 512* 2* 1),  y)
             neg_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), neg_output.view(-1, 512* 2* 1), -1 * y)
@@ -74,7 +74,7 @@ if __name__ == "__main__":
             # print("pos_loss: ", pos_loss)
             # print("neg_loss: ", neg_loss)
 
-            loss = torch.mean(pos_loss) + torch.mean(neg_loss)
+            loss = pos_loss + neg_loss
             batch_train_loss += loss
             
             # print('epoch: {} , loss: {}'.format(epoch, loss))
@@ -104,7 +104,7 @@ if __name__ == "__main__":
                     v_pos_loss = cosine_loss(val_anchor_output.view(-1, 512* 2 * 1), val_pos_output.view(-1, 512* 2* 1),  y) 
                     v_neg_loss = cosine_loss(val_anchor_output.view(-1, 512* 2 * 1), val_neg_output.view(-1, 512* 2* 1), -1 * y)
 
-                    v_loss =  torch.mean(v_pos_loss) + torch.mean(v_neg_loss)
+                    v_loss =  v_pos_loss + v_neg_loss
 
                     #v_loss = cosine_loss(val_anchor_output, val_pos_output, val_neg_output)
                     batch_val_loss += v_loss
@@ -182,7 +182,7 @@ if __name__ == "__main__":
 
     ## model_save
     print('model_save')
-    # torch.save(image_sim.state_dict() , '../My_model/cosine_Vgg_1.pt') 
+    torch.save(image_sim.state_dict() , '../My_model/cosine_Vgg_1.pt') 
     # (lr : 0.0001, iter: 200 -> 512_1), (r : 0.0001, iter:141... -> 512_2), (r : 0.0001, iter: 61 -> 512_3), lr을 0.0001보다 크게 할 때, loss: infinite
     # (lr : 0.0002,iter: 141 -> 512_4), (lr : 0.0001,iter: 141 -> 512_4, batch-> 32 -> 512_5)
     # (r : 0.0001, iter:141... -> 512_6)

@@ -25,7 +25,7 @@ if __name__ == '__main__':
     model_path_2 = '../My_model/Max_Vgg_512_2.pt'
     model_path_3 = '../My_model/Max_Vgg_512_3.pt'
     model_path_4 = '../My_model/Max_Vgg_512_4.pt'
-    model_path = '../My_model/Big_Vgg_2.pt'
+    model_path = '../My_model/cosine_Vgg_1.pt'
 
     # data setting
     cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
