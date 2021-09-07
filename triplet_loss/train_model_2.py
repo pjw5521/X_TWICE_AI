@@ -18,10 +18,10 @@ if __name__ == "__main__":
     # 변수 설정
     data_scr = '../data/'
     ratio = 0.9
-    batch_size = 16
-    train_iter = 150
+    batch_size = 32
+    train_iter = 301
     step = 50 # batch size당 몇번 학습 사용 x
-    lr = 0.0003 
+    lr = 0.002 
     margin = 0.1
     epoch_list = []
     val_epoch_list = []
@@ -35,10 +35,11 @@ if __name__ == "__main__":
     next_batch = Dataset.get_triplets_batch
     test_images = Dataset.images_test # validation image data
     test_labels = Dataset.labels_test # validation image data
-
+    y = torch.ones(1).to(cuda)
+    
     # model setting 
     cosine_loss = nn.CosineEmbeddingLoss(reduction='none')
-    optimizer = optim.Adam(image_sim.parameters(), lr = lr)
+    optimizer = optim.SGD(image_sim.parameters(), lr = lr , momentum= 0.99)
 
     ## 초기 parameters 값
     print('initail model parameter: {}'.format(image_sim.parameters()))
@@ -57,38 +58,44 @@ if __name__ == "__main__":
         batch_train_loss = 0
         batch_val_loss = 0
 
-        # print('anchor_image : ', anchor_images[0])
-        for anchor_img, pos_img, neg_img in zip(anchor_images, pos_images, neg_images):
+        # pos loss 
+        for anchor_img, pos_img in zip(anchor_images, pos_images):
 
             optimizer.zero_grad() # gradient to zero
 
-            # input network
-            anchor_output = image_sim.forward(anchor_img) # 512 * 2 * 1
+            anchor_output = image_sim.forward(anchor_img)
             pos_output = image_sim.forward(pos_img)
-            neg_output = image_sim.forward(neg_img)
-            y = torch.ones(1).to(cuda)
-            
+
             pos_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), pos_output.view(-1, 512* 2* 1),  y)
-            neg_loss = cosine_loss(anchor_output.view(-1, 512* 2 * 1), neg_output.view(-1, 512* 2* 1), -1 * y)
-            
-            # debug
-            # print("pos_loss: ", pos_loss)
-            # print("neg_loss: ", neg_loss)
 
-            loss = pos_loss + neg_loss
-            batch_train_loss += loss
-            
-            # print('epoch: {} , loss: {}'.format(epoch, loss))
-
-            if not torch.isfinite(loss):
+            if not torch.isfinite(pos_loss):
                 print('non - finite loss : loss가 유한값이 아님')
                 exit(1)
 
-            loss.backward() # backpropagation
-            optimizer.step() # update gradient
+            batch_train_loss += pos_loss
+            pos_loss.backward()
+            optimizer.step()
+        
+        # neg loss
+        for anchor_img, neg_img in zip(anchor_images, neg_images):
+
+            optimizer.zero_grad() # gradient to zero
+
+            anchor_output = image_sim.forward(anchor_img)
+            neg_output = image_sim.forward(neg_img)
+
+            neg_loss =  cosine_loss(anchor_output.view(-1, 512* 2 * 1), neg_output.view(-1, 512* 2* 1), -1 * y)
+            
+            if not torch.isfinite(neg_loss):
+                print('non - finite loss : loss가 유한값이 아님')
+                exit(1)
+
+            batch_train_loss += neg_loss
+            neg_loss.backward()
+            optimizer.step()
 
         # error save
-        train_loss_list.append((batch_train_loss /  batch_size).detach().cpu().numpy())
+        train_loss_list.append((batch_train_loss /  2 * batch_size).detach().cpu().numpy())
         
         # validation
         if epoch % 20 == 0:
@@ -126,10 +133,10 @@ if __name__ == "__main__":
 
     
     # error list save
-    with open('./train_loss_list_4.txt', 'wb') as f:
+    with open('./train_loss_list_5.txt', 'wb') as f:
         pickle.dump(train_loss_list, f)
     
-    with open('./val_loss_list_4.txt', 'wb') as f:
+    with open('./val_loss_list_5.txt', 'wb') as f:
         pickle.dump(val_loss_list, f)
     
 
@@ -183,7 +190,7 @@ if __name__ == "__main__":
 
     ## model_save
     print('model_save')
-    torch.save(image_sim.state_dict() , '../My_model/cosine_Vgg_4.pt') 
+    torch.save(image_sim.state_dict() , '../My_model/cosine_Vgg_5.pt') 
     # (lr : 0.0001, iter: 200 -> 512_1), (r : 0.0001, iter:141... -> 512_2), (r : 0.0001, iter: 61 -> 512_3), lr을 0.0001보다 크게 할 때, loss: infinite
     # (lr : 0.0002,iter: 141 -> 512_4), (lr : 0.0001,iter: 141 -> 512_4, batch-> 32 -> 512_5)
     # (r : 0.0001, iter:141... -> 512_6)

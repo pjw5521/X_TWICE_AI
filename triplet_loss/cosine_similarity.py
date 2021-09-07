@@ -15,33 +15,37 @@ class Consine_Similarity():
     
     # consine 유사도 구하기
     # 이때 들어오는 vector 값을 numpy array값으로 했다고 가정 
-    def forward(self, vector1, vector2_list):
+    def forward(self, train_list, noise_list):
 
-        print("vector1: {}".format(vector1))
-        
-        max_sim = []
-        max_label = []
-        
-        # similarity 계산     
-        for idx, vector2 in enumerate(vector2_list):
+        max_list = []
+        # similarity 계산
+        all_max_info = []
+
+        for vector1 in train_list:
+            max_list = []
+            max_info = []
+            for vector2 in noise_list:
+                var_sim = dot(vector1, vector2 ) / (norm(vector1) * norm(vector2))
+                max_list.append(var_sim)
             
-            var_sim = dot(vector1, vector2 ) / (norm(vector1) * norm(vector2))
+            # 가장 큰 similarity 값
+            max_sim = np.array(max_list)
+            max_info.append(max_sim.argmax()) # index
+            max_info.append(max_sim.max()) # max value
             
-            # print("dot: {}, norm: {}".format(dot(vector1, vector2), norm(vector1) * norm(vector2)))
+            all_max_info.append(max_info)
+        
+        return all_max_info
+  
+        #for idx, vector2 in enumerate(vector2_list):
+            #var_sim = dot(vector1, vector2 ) / (norm(vector1) * norm(vector2))
+            
+            # print("idx: {}, max_sim: {}".format(idx, max_sim))
             # debug
-            print("{} 의 similarity value: {}".format(idx, var_sim))
+            #print("{} 의 similarity value: {}".format(idx, var_sim))
             
-            if len(max_sim) < 4:
-                max_sim.append(var_sim)
-                max_label.append(idx)
-            else:
-                for i in range(4):
-                    if var_sim > max_sim[i]:
-                        max_sim[i] = var_sim
-                        max_label[i] = idx
-
-        return max_sim, max_label
-            
+            #sim_list.append(var_sim)
+   
     # 딥러닝 모델 Feature vector 반환
     def return_vector(self, img_list):
         

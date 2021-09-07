@@ -21,7 +21,7 @@ class PreProcessing:
         self.cuda = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.data_scr = data_src
         print("image data load 중~")
-        self.images_train, self.images_noise, self.labels_train, self.labels_noise = self.preprocessing() 
+        self.images_train, self.images_mirror, self.images_rotate, self.images_bright, self.images_dark, self.train_labels, self.mirror_labels, self.rotate_labels, self.bright_labels, self.dark_labels = self.preprocessing() 
         self.unique_train_label = np.unique(self.labels_train)
         self.map_train_label_indices = {label: np.flatnonzero(self.labels_train == label) for label in 
                                         self.unique_train_label  }
@@ -77,13 +77,21 @@ class PreProcessing:
         # 전체 data set
         images = []
         images_train = []
-        images_noise = []
+        images_mirror = []
+        images_rotate = []
+        images_bright = []
+        images_dark = []
+
         train_labels = []
-        noise_labels = []
+        mirror_labels = []
+        rotate_labels = []
+        bright_labels = []
+        dark_labels = []
         # dir_name = []
 
         for dir in os.listdir(self.data_scr):
             # dir_name.append(dir)
+            # print(dir)
             try:
                 for pic in os.listdir(os.path.join(self.data_scr, dir)):
                     # label create
@@ -99,10 +107,26 @@ class PreProcessing:
                         img = Image.open(self.data_scr + dir + '/' + pic)
                         images_train.append(img)
                         train_labels.append(label)
-                    else:
+                    elif dir == 'mirror':
                         img = Image.open(self.data_scr + dir + '/' + pic)
-                        images_noise.append(img)
-                        noise_labels.append(label)
+                        images_mirror.append(img)
+                        mirror_labels.append(label)
+
+                    elif dir == 'rotate':
+                        img = Image.open(self.data_scr + dir + '/' + pic)
+                        images_rotate.append(img)
+                        rotate_labels.append(label)
+                    
+                    elif dir == 'dark':
+                        img = Image.open(self.data_scr + dir + '/' + pic)
+                        images_dark.append(img)
+                        dark_labels.append(label)
+                    
+                    elif dir == 'bright':
+                        img = Image.open(self.data_scr + dir + '/' + pic)
+                        images_bright.append(img)
+                        bright_labels.append(label)
+                    
                     
             except Exception as e:
                 print('image data load에 실패. :', dir)
@@ -116,22 +140,29 @@ class PreProcessing:
         for i in range(1, 100 + 1):
             print(labels.count(i))
         '''
-        return images_train, images_noise, train_labels, noise_labels
+        return images_train, images_mirror, images_rotate, images_bright, images_dark, train_labels, mirror_labels, rotate_labels, bright_labels, dark_labels
     
     # data 전처리
     def preprocessing(self):
         
         # 각 images -> PIL type
-        images_train, images_noise, train_labels, noise_labels = self.read_data()
+        images_train, images_mirror, images_rotate, images_bright, images_dark, train_labels, mirror_labels, rotate_labels, bright_labels, dark_labels = self.read_data()
         
         # image -> tensor transfrom
         images_train = [self.Transfrom(img) for img in images_train]
-        images_noise = [self.Transfrom(img) for img in images_noise]
+        images_mirror = [self.Transfrom(img) for img in images_mirror]
+        images_rotate = [self.Transfrom(img) for img in images_rotate]
+        images_bright = [self.Transfrom(img) for img in images_bright]
+        images_dark = [self.Transfrom(img) for img in images_dark]
 
         # debug
         print('images_train length', len(images_train))
-        print('images_nosie length', len(images_noise))
+        print('images_nosie length', len(images_mirror))
+        print('images_nosie length', len(images_rotate))
+        print('images_nosie length', len(images_bright))
+        print('images_nosie length', len(images_dark))
 
+        '''
         # image data shuffled
         train_shuffle_indices = np.random.permutation(np.arange(len(train_labels)))
         noise_shuffle_indices = np.random.permutation(np.arange(len(noise_labels)))
@@ -148,8 +179,8 @@ class PreProcessing:
         for index in noise_shuffle_indices:
             noise_images_shuffle.append(images_noise[index])
             noise_labels_shuffle.append(noise_labels[index])
-
-        return train_images_shuffle, noise_images_shuffle, train_labels_shuffle, noise_labels_shuffle
+        '''
+        return images_train, images_mirror, images_rotate, images_bright, images_dark, train_labels, mirror_labels, rotate_labels, bright_labels, dark_labels
 
     # get anchor, positive, negative images
     def get_triplets(self):
