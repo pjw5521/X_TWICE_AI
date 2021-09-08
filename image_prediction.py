@@ -68,12 +68,12 @@ class Image_Prediction():
         if check == True:
             print("check : yes")
             result = 'Y'
-            os.remove('image.jpg')
+            #os.remove('image.jpg')
             return result, token_id
 
         else :
             print('check : No')
-            os.remove('image.jpg')
+            #os.remove('image.jpg')
             #return dense_vector.data, self.current_norm
             return self.current_vector, self.current_norm,
 
@@ -87,7 +87,8 @@ if __name__ == '__main__':
     predict = Image_Prediction('./My_model/cosine_Vgg_3.pt', image)
     print('predict current_vector :', predict.current_vector)
     print('norm', predict.current_norm )
-    print("result: ", predict.Check_Similarity())
+    result = predict.Check_Similarity()
+    print("result: ", result[0] == 'Y')
 
     predict2 = Image_Prediction('./My_model/cosine_Vgg_3.pt', image2)
     print('predict current_vector :', predict2.current_vector)

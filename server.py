@@ -59,7 +59,7 @@ def predict():
         prediction = Image_Prediction(PATH, temp)
         result = prediction.Check_Similarity()
         
-        if (result[0] == 'Y'): 
+        if result[0] == 'Y': 
             return jsonify({ 'picture_url' : result[1] })
         else :
             vectorlist= []
