@@ -4525,3 +4525,217 @@ _mysql_connector.MySQLInterfaceError: Lost connection to MySQL server during que
 [2021-09-04 20:34:38 +0900] [19162] [INFO] Worker exiting (pid: 19162)
 [2021-09-04 20:34:38 +0900] [19159] [INFO] Handling signal: term
 [2021-09-04 20:34:39 +0900] [19159] [INFO] Shutting down: Master
+[2021-09-08 19:45:26 +0900] [13426] [INFO] Starting gunicorn 20.1.0
+[2021-09-08 19:45:26 +0900] [13426] [INFO] Listening at: http://0.0.0.0:8000 (13426)
+[2021-09-08 19:45:26 +0900] [13426] [INFO] Using worker: sync
+[2021-09-08 19:45:26 +0900] [13430] [INFO] Booting worker with pid: 13430
+[2021-09-08 19:46:13 +0900] [13426] [CRITICAL] WORKER TIMEOUT (pid:13430)
+[2021-09-08 19:46:13 +0900] [13430] [INFO] Worker exiting (pid: 13430)
+[2021-09-08 19:46:13 +0900] [13503] [INFO] Booting worker with pid: 13503
+[2021-09-08 20:03:45 +0900] [13503] [INFO] Worker exiting (pid: 13503)
+[2021-09-08 20:03:45 +0900] [13426] [INFO] Handling signal: term
+[2021-09-08 20:03:45 +0900] [13426] [INFO] Shutting down: Master
+[2021-09-08 20:03:46 +0900] [13971] [INFO] Starting gunicorn 20.1.0
+[2021-09-08 20:03:46 +0900] [13971] [INFO] Listening at: http://0.0.0.0:8000 (13971)
+[2021-09-08 20:03:46 +0900] [13971] [INFO] Using worker: sync
+[2021-09-08 20:03:46 +0900] [13974] [INFO] Booting worker with pid: 13974
+[2021-09-08 20:04:18,718] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:04:29,859] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:04:34,862] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:04:39,452] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:04:49,096] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:04:53,866] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:04:58,470] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:06:23 +0900] [13971] [INFO] Handling signal: term
+[2021-09-08 20:06:53 +0900] [13971] [INFO] Shutting down: Master
+[2021-09-08 20:07:42 +0900] [14295] [INFO] Starting gunicorn 20.1.0
+[2021-09-08 20:07:42 +0900] [14295] [INFO] Listening at: http://0.0.0.0:8000 (14295)
+[2021-09-08 20:07:42 +0900] [14295] [INFO] Using worker: sync
+[2021-09-08 20:07:42 +0900] [14299] [INFO] Booting worker with pid: 14299
+[2021-09-08 20:08:15 +0900] [14295] [CRITICAL] WORKER TIMEOUT (pid:14299)
+[2021-09-08 20:08:15 +0900] [14299] [INFO] Worker exiting (pid: 14299)
+[2021-09-08 20:08:15 +0900] [14333] [INFO] Booting worker with pid: 14333
+[2021-09-08 20:08:29,718] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uosselab/.local/lib/python3.6/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/server.py", line 60, in predict
+    result = prediction.Check_Similarity()
+  File "/home/uosselab/바탕화면/X_TWICE_AI/image_prediction.py", line 42, in Check_Similarity
+    vector_list = db_connection.select_vector(self.current_norm)
+  File "/home/uosselab/바탕화면/X_TWICE_AI/db_connection.py", line 12, in select_vector
+    mycursor = mydb.cursor(prepared=True)
+  File "/home/uosselab/.local/lib/python3.6/site-packages/mysql/connector/connection_cext.py", line 568, in cursor
+    raise errors.OperationalError("MySQL Connection not available.")
+mysql.connector.errors.OperationalError: MySQL Connection not available.
+[2021-09-08 20:12:28 +0900] [14295] [INFO] Handling signal: term
+[2021-09-08 20:12:28 +0900] [14333] [INFO] Worker exiting (pid: 14333)
+[2021-09-08 20:12:28 +0900] [14295] [INFO] Shutting down: Master
+[2021-09-08 20:15:55 +0900] [14895] [INFO] Starting gunicorn 20.1.0
+[2021-09-08 20:15:55 +0900] [14895] [INFO] Listening at: http://0.0.0.0:8000 (14895)
+[2021-09-08 20:15:55 +0900] [14895] [INFO] Using worker: sync
+[2021-09-08 20:15:55 +0900] [14899] [INFO] Booting worker with pid: 14899

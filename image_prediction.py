@@ -23,6 +23,7 @@ class Image_Prediction():
         ])
         self.threshold = 0.98
         self.current_vector, self.current_norm = self.GetFeatureVector(image)
+    
 
     # image가 PIL image일 일때
     def GetFeatureVector(self, image):
@@ -36,8 +37,8 @@ class Image_Prediction():
         return result, norm(result)
 
     def Check_Similarity(self):
-        token_id = '1'
         check = False
+        vector_list = []
         vector_list = db_connection.select_vector(self.current_norm)
         
         convert_vector_list = []
@@ -49,9 +50,11 @@ class Image_Prediction():
         convert_vector_list= np.array(convert_vector_list, dtype=float)
         #print(convert_vector_list)
         print("current.vector shape", self.current_vector.shape)
+        
         ''' vector 압축
         dense_vector = csr_matrix(self.current_vector).reshape(1,-1)
         print("dense_vector shape : ", dense_vector.shape )
+        
         '''
         count = 0 
         #차원 맞추기 
@@ -60,24 +63,27 @@ class Image_Prediction():
             # 유사한 경우 
             if var_sim > self.threshold:
                 test = vector_list[count]
-                token_id = db_connection.getTokenId(test)
+                picture_url = db_connection.getTokenId(test)
                 check = True
                 
             count = count + 1; 
 
         if check == True:
             print("check : yes")
+            print(len(vector_list))
             result = 'Y'
-            #os.remove('image.jpg')
-            return result, token_id
+            os.remove('image.jpg')
+            return result, picture_url, len(vector_list)
 
         else :
             print('check : No')
-            #os.remove('image.jpg')
+            print(len(vector_list))
+            os.remove('image.jpg')
             #return dense_vector.data, self.current_norm
-            return self.current_vector, self.current_norm,
+            return self.current_vector, self.current_norm, len(vector_list)
 
 '''
+
 if __name__ == '__main__':
 
     image  = Image.open('./test/train/train5.jpg')

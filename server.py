@@ -59,8 +59,8 @@ def predict():
         prediction = Image_Prediction(PATH, temp)
         result = prediction.Check_Similarity()
         
-        if result[0] == 'Y': 
-            return jsonify({ 'picture_url' : result[1] })
+        if str(result[0]) == 'Y': 
+            return jsonify({ 'picture_url' : result[1], 'count' : result[2] })
         else :
             vectorlist= []
             for vector in result[0]:
@@ -68,7 +68,7 @@ def predict():
             final = str(vectorlist)
             final = final.replace("[","")
             final = final.replace("]","")
-            return jsonify({ 'picture_vector': final, 'picture_norm' : str(result[1]) })
+            return jsonify({ 'picture_vector': final, 'picture_norm' : str(result[1]), 'count' : result[2] })
         
 
 # vector 값 자릿수 변경 
@@ -78,7 +78,7 @@ def truncate(num, n):
 
 if __name__ == '__main__':
     # app.run()
-    app.run(host='0.0.0.0')
+    app.run(port=8000)
 '''
     image  = Image.open('./cat.jpg')
     temp = image.convert("RGB")
