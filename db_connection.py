@@ -18,11 +18,11 @@ def select_vector(vector_norm):
   adr =  ( first, last )
 
   #sql = "SELECT picture_vector FROM Pictures where token_id = '2343444' or token_id = '2343504'"
-  #sql = "SELECT picture_vector FROM Pictures"
-  sql = "SELECT picture_vector FROM Pictures WHERE picture_norm BETWEEN %s AND %s"
+  sql = "SELECT picture_vector FROM Pictures"
+  #sql = "SELECT picture_vector FROM Pictures WHERE picture_norm BETWEEN %s AND %s"
   
   mycursor.execute(sql)
-  mycursor.execute(sql, adr)
+  #mycursor.execute(sql, adr)
 
   myresult = mycursor.fetchall()
   final = []
@@ -30,10 +30,21 @@ def select_vector(vector_norm):
   for x in myresult:
     final.append(x[0])
 
-  print("final", final)
+  #print("final", final)
   return final
   
+
+def getTokenId(vector):
   
+  adr = ( vector, )
+  sql ="select picture_url From Pictures WHERE picture_vector = %s"
+  mycursor.execute(sql, adr)
+
+  myresult = mycursor.fetchall()
+  
+  result = myresult[0][0]
+  
+  return result
 
 def insert_vector(vector):
 

@@ -13,7 +13,7 @@ import numpy
 app = Flask(__name__)
 imagenet_class_index = json.load(open('./imagenet_class_index.json'))
 
-PATH = './My_model/Max_Vgg_512_2.pt'
+PATH = './My_model/cosine_Vgg_3.pt'
 #model = torch.load(PATH) 
 # PATH 수정 
 #model = models.densenet121(pretrained=True)
@@ -59,8 +59,8 @@ def predict():
         prediction = Image_Prediction(PATH, temp)
         result = prediction.Check_Similarity()
         
-        if result == 'Y': 
-            return jsonify({ 'result' : 'fail' })
+        if (result[0] == 'Y'): 
+            return jsonify({ 'picture_url' : result[1] })
         else :
             vectorlist= []
             for vector in result[0]:
@@ -70,6 +70,7 @@ def predict():
             final = final.replace("]","")
             return jsonify({ 'picture_vector': final, 'picture_norm' : str(result[1]) })
         
+
 # vector 값 자릿수 변경 
 def truncate(num, n):
     integer = int(num * (10**n))/(10**n)
@@ -89,7 +90,7 @@ if __name__ == '__main__':
     #with numpy.printoptions(threshold=numpy.inf):
     #    print('predict current_vector :', predict.current_vector)
     result = predict.Check_Similarity()
-    if result == 'Y': 
+    if str(result[0]) == 'Y': 
         print("유사한 사진 존재")
     else :
         vectorlist= []
@@ -100,7 +101,6 @@ if __name__ == '__main__':
         final= final.replace("]","")
         print(final)
 '''
-
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run
