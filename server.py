@@ -101,6 +101,7 @@ if __name__ == '__main__':
         final= final.replace("]","")
         print(final)
 '''
+
 ######################################################################
 # 이제 웹 서버를 테스트해보겠습니다! 다음과 같이 실행해보세요:
 # FLASK_ENV=development python3 server.py flask run
