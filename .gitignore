@@ -2,3 +2,6 @@ data/
 GPU.py
 test/
 test2/
+inception_V3/
+__pycache__/
+*.log
