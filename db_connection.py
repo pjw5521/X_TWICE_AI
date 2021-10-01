@@ -3,16 +3,16 @@ import mysql.connector
 def select_vector(vector_norm):
 
   mydb = mysql.connector.connect(
-  host="172.16.163.153",
-  user="root",
-  password="selab2021",
-  database = "test"
+    host="172.16.163.74",
+    user="root",
+    password="selab2021",
+    database = "test"
   )
 
   mycursor = mydb.cursor(prepared=True)
   # 나중에 주석 코드로 변경 
   first = vector_norm - 100
-  last = vector_norm + 100 
+  last = vector_norm + 100
   
   adr =  ( first, last )
 
@@ -39,10 +39,10 @@ def select_vector(vector_norm):
 def getTokenId(vector):
 
   mydb = mysql.connector.connect(
-  host="172.16.163.153",
-  user="root",
-  password="selab2021",
-  database = "test"
+    host="172.16.163.74",
+    user="root",
+    password="selab2021",
+    database = "test"
   )
 
   mycursor = mydb.cursor(prepared=True)

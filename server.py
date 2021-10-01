@@ -14,13 +14,13 @@ app = Flask(__name__)
 imagenet_class_index = json.load(open('./imagenet_class_index.json'))
 
 PATH = './My_model/cosine_Vgg_3.pt'
-#model = torch.load(PATH) 
+# model = torch.load(PATH) 
 # PATH 수정 
 #model = models.densenet121(pretrained=True)
-#model.eval()
+# model.eval()
 
 
-def transform_image(image_bytes):
+""" def transform_image(image_bytes):
     my_transforms = transforms.Compose([
         transforms.Resize(255),
         transforms.CenterCrop(224),
@@ -39,7 +39,7 @@ def get_prediction(image_bytes):
     outputs = model.forward(tensor)
     _, y_hat = outputs.max(1)
     predicted_idx = str(y_hat.item())
-    return imagenet_class_index[predicted_idx]
+    return imagenet_class_index[predicted_idx]"""
 
 
 @app.route('/predict', methods=['POST'])
